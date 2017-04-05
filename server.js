@@ -66,9 +66,11 @@ io.on('connection', function(socket){
 app.use('/static/css', express.static(__dirname + '/public/css'));
 app.use('/static/js', express.static(__dirname + '/public/js'));
 app.use('/static/font', express.static(__dirname + '/public/font'));
+app.use('/static/pictures', express.static(__dirname + '/public/pictures'));
 
-app.get('/' , function (req, res){
+app.get('/', function (req, res){
     console.log('REQ on /');
+    res.sendFile(__dirname + '/views/index.html');
     res.sendFile(__dirname + '/views/page.html');
 });
 
