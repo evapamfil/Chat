@@ -1,3 +1,13 @@
+/*============================================================
+#title            : Mood'Chat
+#description      : JS for Chat socket
+#author           : DUPRE ANTHONY & EVA PAMFIL
+#date             : 2017/04/05
+#version          : Constantly on progress
+#usage            : JAVASCRIPT
+#notes            : 
+=============================================================*/
+
 /* Script for Socket */ 
 
 var socket = io('http://localhost:1337');

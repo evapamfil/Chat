@@ -12,19 +12,38 @@
     <!-- Swiper -->
     <div class="swiper-container swiper-container-horizontal">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="../static/pictures/home1.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="../static/pictures/home2.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="../static/pictures/home3.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="../static/pictures/home4.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="../static/pictures/home5.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="../static/pictures/home6.jpg" alt=""></div>
+            <div class="swiper-slide" id="light"></div>
+            <div class="swiper-slide" id="black"></div>
+            <div class="swiper-slide"><img src="../static/pictures/sea.jpg" alt="sea-mood"></div>
+            <div class="swiper-slide"><img src="../static/pictures/jungle.jpg" alt="jungle-mood"></div>
+            <div class="swiper-slide"><img src="../static/pictures/space.jpg" alt="space-mood"></div>
+            <div class="swiper-slide"><img src="../static/pictures/savana.jpg" alt="savana-mood"></div>
         </div>
         
         <section id="start-chat">
-            <img src="/static/pictures/LOGO-moodchat.png">
-            <input type="text" name="name" placeholder="Votre nom">
-            <p>Choisissez votre avatar</p>
-            <div></div>
+            <img src="/static/pictures/LOGO-moodchat.png" alt="logo" id="logo">
+            <input type="text" name="name" placeholder="Your name" id="name">
+            <p>Choose your avatar :</p>
+            <div>
+                <ul>
+                    <li>
+                        <label><img src="../static/pictures/fillion.png" alt="fillion" class="img_avatar"></label>
+                        <input type="radio" name="avatar" value="fillion" checked class="input_avatar">
+                    </li>
+                    <li>
+                        <input type="radio" name="avatar" value="byonce" class="input_avatar">
+                        <label><img src="../static/pictures/byonce.png" alt="Byoncé" class="img_avatar"></label>
+                    </li>
+                    <li>
+                        <input type="radio" name="avatar" value="donald" class="input_avatar">
+                        <label><img src="../static/pictures/donald.png" alt="Donald" class="img_avatar"></label>
+                    </li>
+                    <li>
+                        <input type="radio" name="avatar" value="kim" class="input_avatar">
+                        <label><img src="../static/pictures/kim.png" alt="Kim" class="img_avatar"></label>
+                    </li>
+                </ul>
+            </div>
             <a href="../views/page.html">GO !</a>
         </section>
     </div>
