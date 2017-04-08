@@ -22,13 +22,14 @@
         
         <section id="start-chat">
             <img src="/static/pictures/LOGO-moodchat.png" alt="logo" id="logo">
+            <p>Enter your name :</p>
             <input type="text" name="name" placeholder="Your name" id="name">
             <p>Choose your avatar :</p>
             <div>
                 <ul>
                     <li>
                         <label><img src="../static/pictures/fillion.png" alt="fillion" class="img_avatar" id="fillion"></label>
-                        <input type="radio" name="avatar" value="fillion" checked class="input_avatar" id="avatar_fillion">
+                        <input type="radio" name="avatar" value="fillion" class="input_avatar" id="avatar_fillion">
                     </li>
                     <li>
                         <input type="radio" name="avatar" value="byonce" class="input_avatar" id="avatar_byonce">
@@ -44,11 +45,12 @@
                     </li>
                 </ul>
             </div>
-            <a href="/static/page.html">GO !</a>
+            <a id="button">GO !</a>
         </section>
     </div>
 
     <script type="text/javascript" src="/static/js/swiper.min.js"></script>
     <script type="text/javascript" src="/static/js/script_home.js"></script>
+    <script type="text/javascript" src="/static/js/cookie.js"></script>
 </body>
 </html>
