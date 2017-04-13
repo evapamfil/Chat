@@ -27,7 +27,7 @@ socket.on('newmessage', function(toto){
     var li = document.createElement('li');
     li.innerHTML = toto;
     
-    document.getElementsByTagName('ul')[0].appendChild(li);
+    document.getElementById('chat').appendChild(li);
 })
 
 function sendmessage(){
@@ -49,6 +49,6 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-document.getElementsByTagName('button')[0].addEventListener('click', sendmessage)
+document.getElementById('button-send').addEventListener('click', sendmessage)
 
                                                      
