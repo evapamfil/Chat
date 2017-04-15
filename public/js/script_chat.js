@@ -7,8 +7,86 @@
 #usage            : JAVASCRIPT
 #notes            : 
 =============================================================*/
+
+    /* Script for Socket */
+    //COOKIE
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0)
+                return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+
+    var socket = io('http://localhost:1337');
+    var name_user = getCookie("user");
+    var socket_id = getCookie("io_cookie"); 
+
+    function send_user(){
+        socket.emit('user', name); 
+    }
+
+    socket.on('connect', function() {
+        console.log('Nouveau socket!!!!');
+        console.log(socket.id); // '65p5..'
+        send_user(); 
+        
+        setCookie("io_cookie",socket.id,30);
+        socket.emit('id_socket', socket_id); 
+    });
+
+    socket.on('response', function(data) {
+        console.log('Client : Response received: ');
+        console.log(data);
+    }); 
+
+    socket.on('user', function(name){
+        if(name != name_user){
+            $("#name").html(name);
+            console.log(name); 
+        }else {
+            alert('ok'); 
+        }
+    }); 
+        
+    socket.on('newmessage', function(toto) {
+        console.log('newmessage', toto)
+
+        var li = document.createElement('li');
+        li.innerHTML = toto;
+
+        document.getElementById('chat').appendChild(li);
+    });
+
+
+    function sendmessage() {
+        console.log('test-click');
+        var input = document.getElementsByTagName('input')[0];
+        console.log(input.value);
+
+        if (input.value.length <= 0) {
+            return alert('please write something');
+        }
+
+        socket.emit('message', input.value)
+        input.value = ''
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.keyCode === 13) {
+            sendmessage();
+        }
+    });
+
+    document.getElementById('button-send').addEventListener('click', sendmessage);
+
 $(document).ready(function() {
 
+    //FRONT
     $('#dark').on({
         'click': function() {
             $('#logo').attr('src', '/static/pictures/LOGO-moodchat-white.png');

@@ -8,6 +8,13 @@
 #notes            : 
 =============================================================*/
 $(document).ready(function() {
+    
+    var input_name = document.getElementById("name");
+
+    //SOCKET 
+    var socket = io('http://localhost:1337');
+    
+    
     //SWIPER
     var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
@@ -19,21 +26,16 @@ $(document).ready(function() {
         autoplay: 3000
     });
 
-    var input_name = document.getElementById("name");
-
     //INPUT
     $("#button").click(function(e) {
         if (input_name.value == "") {
             alert("To continue we need your name ! ;)")
         } else {
+            var name = $("#name").val();
+            var avatar = $('input[name=avatar]:checked').val();
+            setCookie("user",name,30);
+            setCookie("avatar",avatar,30);
             $("#button").attr('href', '/static/page.html')
-
-            var avatar_val = $('input[name=avatar]:checked').val();
-            console.log($('input[name=avatar]:checked').val());
-            setCookie("CHOICE AVATAR", avatar_val, 30);
-
-            var val_name = $("#name").val();
-            setCookie("NAME USER", val_name, 30);
         }
     });
 

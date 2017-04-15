@@ -21,7 +21,6 @@ function getCookie(name) {
 }
 
 /* Script for Socket */
-
 var socket = io('http://localhost:1337');
 socket.on('connect', function() {
     console.log('Nouveau socket!!!!');
@@ -33,14 +32,17 @@ socket.on('response', function(data) {
     console.log(data);
 })
 
-var pseudo = getCookie("CHOICE AVATAR");
-socket.emit('avatar', pseudo)
-console.log(pseudo);
+var avatar = getCookie("CHOICE AVATAR");
+socket.emit('avatar', avatar)
+console.log(avatar);
 
 var name = getCookie("NAME USER");
 socket.emit('user', name)
 console.log(name);
 
+socket.on('user', function(name) {
+    $('#name').html(name + ' est connecté !');
+});
 
 socket.on('newmessage', function(toto) {
     console.log('newmessage', toto)

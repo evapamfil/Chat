@@ -12,23 +12,21 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
-io.on('connection', function(socket, pseudo) {
-    console.log('New connection on socket')
-    console.log(socket.id)
+io.on('connection', function(socket, name, avatar, id) {
+    console.log('New connection on socket');
+    console.log(socket.id);
+    
     socket.on('message', function(data) {
         console.log('receive', data);
         io.emit('newmessage', data);
     });
-
-    socket.on('avatar', function(pseudo) {
-        console.log('The avatar is', pseudo);
-        socket.emit('avatar', pseudo);
-    })
-
+    
     socket.on('user', function(name) {
         console.log('The user is', name);
-        socket.emit('user', name);
-    })
+        socket.name = name; 
+        console.log(socket.name); 
+        io.emit('user', name);
+    });
 });
 
 app.use('/static/css', express.static(__dirname + '/public/css'));
