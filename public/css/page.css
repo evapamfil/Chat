@@ -14,6 +14,10 @@
 	src: url(/static/font/Gotham-Medium.otf);
 }
 
+body {
+    overflow: hidden; 
+}
+
 header{
 	height: 100px;
 	width: 100%;

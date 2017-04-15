@@ -10,10 +10,6 @@
 $(document).ready(function() {
     
     var input_name = document.getElementById("name");
-
-    //SOCKET 
-    var socket = io('http://localhost:1337');
-    
     
     //SWIPER
     var swiper = new Swiper('.swiper-container', {

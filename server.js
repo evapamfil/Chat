@@ -21,11 +21,9 @@ io.on('connection', function(socket, name, avatar, id) {
         io.emit('newmessage', data);
     });
     
-    socket.on('user', function(name) {
-        console.log('The user is', name);
-        socket.name = name; 
-        console.log(socket.name); 
-        io.emit('user', name);
+    socket.on('user_avatar', function(data) {
+        console.log(data); 
+        io.volatile.emit('user_avatar', data); 
     });
 });
 

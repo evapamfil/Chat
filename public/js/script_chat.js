@@ -24,19 +24,19 @@
 
     var socket = io('http://localhost:1337');
     var name_user = getCookie("user");
-    var socket_id = getCookie("io_cookie"); 
+    var my_avatar = getCookie("avatar"); 
 
-    function send_user(){
-        socket.emit('user', name); 
+    function send(){
+        socket.emit('user_avatar', {
+            user: name_user,
+            avatar: my_avatar
+        }); 
     }
 
     socket.on('connect', function() {
         console.log('Nouveau socket!!!!');
         console.log(socket.id); // '65p5..'
-        send_user(); 
-        
-        setCookie("io_cookie",socket.id,30);
-        socket.emit('id_socket', socket_id); 
+        send(); 
     });
 
     socket.on('response', function(data) {
@@ -44,14 +44,28 @@
         console.log(data);
     }); 
 
-    socket.on('user', function(name){
-        if(name != name_user){
-            $("#name").html(name);
-            console.log(name); 
-        }else {
-            alert('ok'); 
+    socket.on('user_avatar', function(data){
+        if(name_user != data.user){
+            $("#name").html(data.user);
+            
+            switch(data.avatar) {
+               case fillion:
+                   $("#user").attr('src', '/static/pictures/fillion.png');
+                   break;
+               case beyonce:
+                   $("#user").attr('src', '/static/pictures/byonce.png');
+                   break;
+               case donald:
+                   $("#user").attr('src', '/static/pictures/donald.png');
+                   break;
+               case kim:
+                   $("#user").attr('src', '/static/pictures/kim.png');
+                   break;
+               default:
+                   return; 
+            }
         }
-    }); 
+    });
         
     socket.on('newmessage', function(toto) {
         console.log('newmessage', toto)
