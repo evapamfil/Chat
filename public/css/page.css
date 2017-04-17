@@ -14,9 +14,6 @@
 	src: url(/static/font/Gotham-Medium.otf);
 }
 
-body {
-    overflow: hidden; 
-}
 
 header{
 	height: 100px;
@@ -331,8 +328,9 @@ h2{
         margin-top: 370px;
     }
 }
+/*LITTLE SCREEN*/
 
-@media all and (min-width: 960px) and (max-width: 1279px) {
+@media all and (min-width: 960px) and (max-width: 1280px) {
 
     #logo {
         width: 16%; 
@@ -346,6 +344,63 @@ h2{
     #second-line {
         width: 63%; 
     }
+      }
+    input {
+        width: 72%;
+        font-size: 15px;
+    }
+    #button{
+        width: 22%;
+    }
+    #button-emoji{
+        width: 27px;
+    }
+    #button-send{
+        width: 34px;
+    }
     
     
+}
+
+/*PHONE*/
+
+@media all and (min-width: 480px) and (max-width: 910px){
+     #logo {
+        width: 20%; 
+        margin-left: 15px; 
+    }
+    #user{
+        width: 10%;
+    }
+    h1{
+        font-size: 20px;
+    }
+    .theme {
+        font-size: 10px;
+    }
+    h2 {
+        font-size: 20px;
+        margin-top: 170px;
+    }
+    
+    #first-line {
+        width: 63%; 
+    }
+    
+    #second-line {
+        width: 63%; 
+    }
+    input {
+        width: 72%;
+        font-size: 15px;
+    }
+    #button{
+        width: 22%;
+    }
+    #button-emoji{
+        width: 27px;
+    }
+    #button-send{
+        width: 34px;
+    }
 }
