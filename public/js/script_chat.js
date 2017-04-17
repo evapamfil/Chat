@@ -214,10 +214,18 @@ $(document).ready(function() {
     });
 
     $('#button-emoji').on({
-        'click': function() {
-            $('#emoji').css('display', 'block');
+'click': function() {
+var display = ($('#emoji').css('display') === 'none')
+? 'block'
+: 'none';
+$('#emoji').css('display', display);
+}
+});
+    
+    
+        
+    
 
-        }
-    });
+
 
 });
