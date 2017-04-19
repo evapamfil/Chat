@@ -70,6 +70,7 @@ header{
 	position: relative;
 }
 
+
 #text{
 	position: absolute;
 	bottom: 0;
@@ -77,21 +78,23 @@ header{
 	background-color: #ffffff;
 }
 
-
 #chat{
-
-   bottom: 80px;
-   position: absolute;
-   width: auto;
-   max-width: 50%;
-   list-style: none;
-   
+    position: absolute;
+    list-style: none;
+    width: 100%;
+    height: calc(100% - 47px);
+    overflow-y: scroll;
+    padding: 8px;
 }
+
 #chat li{
-   background-color: white;
-   border-radius: 10px;
-   width: auto;
-   padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    width: 50%;
+    padding: 10px;
+    bottom: 0px;
+    position: relative;
+    margin-bottom: 5px;
 }
 
 #chat li img{
