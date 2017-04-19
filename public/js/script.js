@@ -7,48 +7,69 @@
 #usage            : JAVASCRIPT
 #notes            : 
 =============================================================*/
+//COOKIES
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0)
+            return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
 
-/* Script for Socket */ 
-
+/* Script for Socket */
 var socket = io('http://localhost:1337');
-socket.on('connect', function(){
+socket.on('connect', function() {
     console.log('Nouveau socket!!!!');
     console.log(socket.id); // '65p5..'
 });
 
-socket.on('response', function(data){
+socket.on('response', function(data) {
     console.log('Client : Response received: ');
     console.log(data);
 })
 
-socket.on('newmessage', function(toto){
+var avatar = getCookie("CHOICE AVATAR");
+socket.emit('avatar', avatar)
+console.log(avatar);
+
+var name = getCookie("NAME USER");
+socket.emit('user', name)
+console.log(name);
+
+socket.on('user', function(name) {
+    $('#name').html(name + ' est connecté !');
+});
+
+socket.on('newmessage', function(toto) {
     console.log('newmessage', toto)
-    
+
     var li = document.createElement('li');
     li.innerHTML = toto;
-    
-    document.getElementsByTagName('ul')[0].appendChild(li);
+
+    document.getElementById('chat').appendChild(li);
 })
 
-function sendmessage(){
+function sendmessage() {
     console.log('test-click');
     var input = document.getElementsByTagName('input')[0];
     console.log(input.value);
-    
-    if (input.value.length <= 0){
+
+    if (input.value.length <= 0) {
         return alert('please write something');
     }
-    
+
     socket.emit('message', input.value)
-    input.value=''
+    input.value = ''
 }
 
 document.addEventListener('keydown', function(e) {
-    if (e.keyCode === 13){
+    if (e.keyCode === 13) {
         sendmessage();
     }
 });
 
-document.getElementsByTagName('button')[0].addEventListener('click', sendmessage)
-
-                                                     
+document.getElementById('button-send').addEventListener('click', sendmessage)
