@@ -77,10 +77,23 @@ header{
 	background-color: #ffffff;
 }
 
+
 #chat{
-    list-style: none;
-    padding: 20px;  
+
+   bottom: 80px;
+   position: absolute;
+   width: auto;
+   max-width: 50%;
+   list-style: none;
+   
 }
+#chat li{
+   background-color: white;
+   border-radius: 10px;
+   width: auto;
+   padding: 10px;
+}
+
 #chat li img{
     width: auto;    
 }

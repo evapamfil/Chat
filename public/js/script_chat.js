@@ -90,12 +90,11 @@ function sendmessage() {
 
     socket.emit('message', input.value)
     input.value = ''; 
-    $('input').attr('value', ''); 
 }
 
 document.addEventListener('keydown', function(e) {
     if (e.keyCode === 13) {
-        sendmessage();
+        sendmessage(); 
     }
 });
 
@@ -117,6 +116,7 @@ $(document).ready(function() {
             $('header').css('background-color', '#2C2C2C');
             $('#section-left').css('background-color', '#000000');
             $('#section-right').css('background-image', 'url(/static/pictures/black.jpg)');
+            $('#section-right').css('background-size', '');
             $('input').css('background-color', '#656464');
             $('[placeholder]').css('color','#ffffff');
             $('button').css('background-color', '#656464');
@@ -214,12 +214,14 @@ $(document).ready(function() {
             $('header').css('background-color', '#ffffff');
             $('#section-left').css('background-color', '#f0f0f0');
             $('#section-right').css('background-image', 'url(/static/pictures/light.jpg)');
+            $('#section-right').css('background-size', '');
             $('input').css('background-color', '#ffffff');
             $('button').css('background-color', '#ffffff');
             $('#button').css('background-color', '#ffffff');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%201.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%201.png)');
             $('#button-gif').css('background-image', 'url(/static/pictures/GIF.png)');
+            
         }
     });
     
@@ -237,153 +239,17 @@ $(document).ready(function() {
         }
     });
     
-      
-    $('#emoji1').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji1.png"/>'); 
+        //SEND EMOJI
+    $(".emoji-list li").click(function() {
+        var _smiley = $('.emoji-list li').find('img');
+        console.log(_smiley);
+        for (var i = 0; i < _smiley.length; i++) {
+            var smiley = _smiley[i].outerHTML;
+            console.log(smiley);
+            var message = $('input').val();
+            $('input').val(message + ' ' + smiley + ' ').focus();
         }
-    })
-    $('#emoji2').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji2.png"/>'); 
-        }
-    })
-    $('#emoji3').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji3.png"/>'); 
-        }
-    })
-    
-    $('#emoji4').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji4.png"/>'); 
-        }
-    })
-    $('#emoji5').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji5.png"/>'); 
-        }
-    })
-    $('#emoji6').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji6.png"/>'); 
-        }
-    })
-    $('#emoji7').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji7.png"/>'); 
-        }
-    })
-    $('#emoji8').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji8.png"/>'); 
-        }
-    })
-    $('#emoji9').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji9.png"/>'); 
-        }
-    })
-    $('#emoji10').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji10.png"/>'); 
-        }
-    })
-    $('#emoji11').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji11.png"/>'); 
-        }
-    })
-    $('#emoji12').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji13.png"/>'); 
-        }
-    })
-    $('#emoji14').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji14.png"/>'); 
-        }
-    })
-    $('#emoji15').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji15.png"/>'); 
-        }
-    })
-    $('#emoji16').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji16.png"/>'); 
-        }
-    })
-    $('#emoji17').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji17.png"/>'); 
-        }
-    })
-    $('#emoji18').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji18.png"/>'); 
-        }
-    })
-    $('#emoji19').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji19.png"/>'); 
-        }
-    })
-    $('#emoji20').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji20.png"/>'); 
-        }
-    })
-    $('#emoji21').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji21.png"/>'); 
-        }
-    })
-    $('#emoji22').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji22.png"/>'); 
-        }
-    })
-    $('#emoji23').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji23.png"/>'); 
-        }
-    })
-    $('#emoji24').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji24.png"/>'); 
-        }
-    })
-    $('#emoji25').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji25.png"/>'); 
-        }
-    })
-    $('#emoji26').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji26.png"/>'); 
-        }
-    })
-    $('#emoji27').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji27.png"/>'); 
-        }
-    })
-    $('#emoji28').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji28.png"/>'); 
-        }
-    })
-    $('#emoji29').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji29.png"/>'); 
-        }
-    })
-    $('#emoji30').on({
-        'click':function() {
-            $('input').attr('value', '<img src="../static/pictures/emoji/emoji30.png"/>'); 
-        }
-    })
+    });
                                  
    
     //API GIPHY
@@ -415,8 +281,6 @@ $(document).ready(function() {
         }
 
         list_gif(data.data);
-
-    
     
     $('#button-gif').on({
         'click': function() {
