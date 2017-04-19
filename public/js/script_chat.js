@@ -48,7 +48,7 @@ $(document).ready(function() {
     //AVATAR AND NAME OF USER
     socket.on('user_avatar', function(data) {
         $("#name").remove();
-            for (var i=0; i<data.length; ++i){
+            for (var i=0; i<data.length; i++){
                 if (name_user != data[i].user) {
                     
                     switch (data[i].avatar) {
