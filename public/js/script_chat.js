@@ -71,10 +71,14 @@ socket.on('user_avatar', function(data) {
 //SEND A MESSAGE
 socket.on('newmessage', function(toto) {
     console.log('newmessage', toto)
-
+    var avatar = document.createElement('img');
     var li = document.createElement('li');
-    li.innerHTML = toto;
-
+    var text = document.createElement('p');
+    text.innerHTML = toto;
+    li.setAttribute("class", "li-chat");
+    avatar.setAttribute("src", "/static/pictures/byonce.png");
+    li.appendChild(avatar);
+    li.appendChild(text);
     document.getElementById('chat').appendChild(li);
 });
 
