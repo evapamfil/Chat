@@ -105,52 +105,56 @@
             </article>
             <article id="section-right">
                 <ul id="chat"></ul>
+                <div id="gif">
+                  <ul></ul>
+                </div>
                 <div id="emoji">
                     <ul class="emoji-list">
-                        <li><img src="/static/pictures/emoji/emoji1.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji2.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji3.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji4.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji5.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji6.png" class="emoji"></li>
+                        <li id="emoji1"><img src="/static/pictures/emoji/emoji1.png" class="emoji" data-smiley=":)"></li>
+                        <li id="emoji2"><img src="/static/pictures/emoji/emoji2.png" class="emoji" data-smiley=";)"></li>
+                        <li id="emoji3"><img src="/static/pictures/emoji/emoji3.png" class="emoji"></li>
+                        <li id="emoji4"><img src="/static/pictures/emoji/emoji4.png" class="emoji"></li>
+                        <li id="emoji5"><img src="/static/pictures/emoji/emoji5.png" class="emoji"></li>
+                        <li id="emoji6"><img src="/static/pictures/emoji/emoji6.png" class="emoji"></li>
                     </ul>
                     <ul class="emoji-list">
-                        <li><img src="/static/pictures/emoji/emoji7.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji8.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji9.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji10.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji11.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji12.png" class="emoji"></li>
+                        <li id="emoji7"><img src="/static/pictures/emoji/emoji7.png" class="emoji"></li>
+                        <li id="emoji8"><img src="/static/pictures/emoji/emoji8.png" class="emoji"></li>
+                        <li id="emoji9"><img src="/static/pictures/emoji/emoji9.png" class="emoji"></li>
+                        <li id="emoji10"><img src="/static/pictures/emoji/emoji10.png" class="emoji"></li>
+                        <li id="emoji11"><img src="/static/pictures/emoji/emoji11.png" class="emoji"></li>
+                        <li id="emoji12"><img src="/static/pictures/emoji/emoji12.png" class="emoji"></li>
                     </ul>
                     <ul class="emoji-list">
-                        <li><img src="/static/pictures/emoji/emoji13.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji14.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji15.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji16.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji17.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji18.png" class="emoji"></li>
+                        <li id="emoji13"><img src="/static/pictures/emoji/emoji13.png" class="emoji"></li>
+                        <li id="emoji14"><img src="/static/pictures/emoji/emoji14.png" class="emoji"></li>
+                        <li id="emoji15"><img src="/static/pictures/emoji/emoji15.png" class="emoji"></li>
+                        <li id="emoji16"><img src="/static/pictures/emoji/emoji16.png" class="emoji"></li>
+                        <li id="emoji17"><img src="/static/pictures/emoji/emoji17.png" class="emoji"></li>
+                        <li id="emoji18"><img src="/static/pictures/emoji/emoji18.png" class="emoji"></li>
                     </ul>
                     <ul class="emoji-list">
-                        <li><img src="/static/pictures/emoji/emoji19.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji20.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji21.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji22.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji23.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji24.png" class="emoji"></li>
+                        <li id="emoji19"><img src="/static/pictures/emoji/emoji19.png" class="emoji"></li>
+                        <li id="emoji20"><img src="/static/pictures/emoji/emoji20.png" class="emoji"></li>
+                        <li id="emoji21"><img src="/static/pictures/emoji/emoji21.png" class="emoji"></li>
+                        <li id="emoji22"><img src="/static/pictures/emoji/emoji22.png" class="emoji"></li>
+                        <li id="emoji23"><img src="/static/pictures/emoji/emoji23.png" class="emoji"></li>
+                        <li id="emoji24"><img src="/static/pictures/emoji/emoji24.png" class="emoji"></li>
                     </ul>
                     <ul class="emoji-list">
-                        <li><img src="/static/pictures/emoji/emoji25.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji26.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji27.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji28.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji29.png" class="emoji"></li>
-                        <li><img src="/static/pictures/emoji/emoji30.png" class="emoji"></li>
+                        <li id="emoji25"><img src="/static/pictures/emoji/emoji25.png" class="emoji"></li>
+                        <li id="emoji26"><img src="/static/pictures/emoji/emoji26.png" class="emoji"></li>
+                        <li id="emoji27"><img src="/static/pictures/emoji/emoji27.png" class="emoji"></li>
+                        <li id="emoji28"><img src="/static/pictures/emoji/emoji28.png" class="emoji"></li>
+                        <li id="emoji29"><img src="/static/pictures/emoji/emoji29.png" class="emoji"></li>
+                        <li id="emoji30"><img src="/static/pictures/emoji/emoji30.png" class="emoji"></li>
                     </ul>
 
                 </div>
                 <article id="text">
-                    <input type="text" placeholder="Votre message ..." />
+                    <input value="" name="chat_message" type="text" placeholder="Votre message ..."/>
                     <div id="button">
+                        <button id="button-gif"></button>
                         <button id="button-emoji"></button>
                         <button id="button-send"></button>
                     </div>
