@@ -23,7 +23,7 @@ $(document).ready(function() {
     }
 
     //SOCKET
-    var socket = io('http://localhost:1337');
+    var socket = io('https://mood-chat-anthony91.c9users.io:8080');
     var name_user = getCookie("user");
     var my_avatar = getCookie("avatar");
 
@@ -47,24 +47,30 @@ $(document).ready(function() {
 
     //AVATAR AND NAME OF USER
     socket.on('user_avatar', function(data) {
-        if (name_user != data.user) {
-            $("#name").html(data.user);
-
-            switch (data.avatar) {
-                case 'fillion':
-                    $("#user").attr('src', '/static/pictures/fillion.png');
-                    break;
-                case 'beyonce':
-                    $("#user").attr('src', '/static/pictures/byonce.png');
-                    break;
-                case 'donald':
-                    $("#user").attr('src', '/static/pictures/donald.png');
-                    break;
-                case 'kim':
-                    $("#user").attr('src', '/static/pictures/kim.png');
-                    break;
-                default:
-                    return;
+        $("#name").remove();
+            for (var i=0; i<data.length; ++i){
+                if (name_user != data[i].user) {
+                    
+                    switch (data[i].avatar) {
+                        case 'fillion':
+                            $("#user").append('<img src="/static/pictures/fillion.png" alt="user">');
+                            $("#user").append('<p>' + data[i].user + '</p>');
+                            break;
+                        case 'beyonce':
+                            $("#user").append('<img src="/static/pictures/byonce.png" alt="user">');
+                            $("#user").append('<p>' + data[i].user + '</p>');
+                            break;
+                        case 'donald':
+                            $("#user").append('<img src="/static/pictures/donald.png" alt="user">');
+                            $("#user").append('<p>' + data[i].user + '</p>');
+                            break;
+                        case 'kim':
+                            $("#user").append('<img src="/static/pictures/kim.png" alt="user">');
+                            $("#user").append('<p>' + data[i].user + '</p>');
+                            break;
+                        default:
+                            return;
+                    }
             }
         }
     });
@@ -489,7 +495,7 @@ $(document).ready(function() {
     }
 
     //API GIPHY
-    var url_giphy = "http://api.giphy.com/v1/stickers/search?q=cat&api_key=dc6zaTOxFJmzC ";
+    var url_giphy = "https://api.giphy.com/v1/stickers/search?q=cat&api_key=dc6zaTOxFJmzC ";
 
     $.get(url_giphy, function(data) {
 

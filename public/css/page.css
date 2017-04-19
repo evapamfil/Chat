@@ -22,32 +22,29 @@ header{
 }
 
 #logo{
-	width: 13%;
-	margin-left: 32px;
-	float: left;
-	top: 50%;
-	position: relative;
-	transform: translateY(-50%);
-}
+    width: 13%;
+    margin-left: 32px;
+    float: left;
 
+}
 #user{
-	width: 3.6%;
-	float: left;
-	margin-left: 40px;
-	top: 50%;
-	position: relative;
-	transform: translateY(-50%);
+   top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+}
+#user img{
+    width: 3.6%;
+    float: left;
+    margin-left: 40px;
+    
 }
 
-#name{
-	float: left;
-	color: #ffba00;
-	font-family: gotham-light;
-	font-size: 35px;
-	margin-left: 18px;
-	top: 50%;
-	position: relative;
-	transform: translateY(-50%);
+#user p{
+    float: left;
+    color: #ffba00 ;
+    font-family: gotham-light;
+    font-size: 35px;
+    margin-left: 18px;
 }
 
 #msg{
