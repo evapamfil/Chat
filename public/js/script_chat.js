@@ -21,11 +21,17 @@ $(document).ready(function () {
         }
         return null;
     }
+    
+    function eraseCookie(name) {
+        setCookie(name,"",-1);
+    }
 
     //SOCKET
-    var socket = io('http://localhost:8080');
+    var socket = io('https://mood-chat-anthony91.c9users.io:8080');
     var name_user = getCookie("user");
+    eraseCookie("user");
     var my_avatar = getCookie("avatar");
+    eraseCookie("avatar");
 
     function send() {
         socket.emit('user_avatar', {
@@ -47,7 +53,7 @@ $(document).ready(function () {
 
     //AVATAR AND NAME OF USER
     socket.on('user_avatar', function (data) {
-        $("#name").remove();
+        $("#user").remove();
         for (var i = 0; i < data.length; i++) {
             if (name_user != data[i].user) {
 
@@ -76,54 +82,122 @@ $(document).ready(function () {
     });
 
     //SEND A MESSAGE
-    socket.on('newmessage', function (toto) {
-        console.log('newmessage', toto)
-        var avatar = document.createElement('img');
-        var li = document.createElement('li');
-        var text = document.createElement('p');
-        text.innerHTML = toto;
-        li.setAttribute("class", "li-chat");
-
-        send();
-        socket.on('user_avatar', function (data) {
-            for (var i = 0; i < data.length; i++) {
-                if (name_user != data[i].user && my_avatar == 'byonce') {
-                    avatar.setAttribute("src", "/static/pictures/byonce.png");
-                    console.log('hi');
-                }
-
-                if (name_user != data[i].user && my_avatar == 'fillion') {
-                    avatar.setAttribute("src", "/static/pictures/fillion.png");
-                    console.log('hi');
-                }
-
-                if (name_user != data[i].user && my_avatar == 'donald') {
-                    avatar.setAttribute("src", "/static/pictures/donald.png");
-                    console.log('hi');
-                }
-
-                if (name_user != data[i].user && my_avatar == 'kim') {
-                    avatar.setAttribute("src", "/static/pictures/kim.png");
-                    console.log('hi');
-                }
-            }
-
-        })
-
-        li.appendChild(avatar);
-        li.appendChild(text);
-        document.getElementById('chat').appendChild(li);
+    socket.on('newmessage', function (data) {
+        switch (data.avatar) {
+            case 'fillion':
+                var avatar = document.createElement('img');
+                var li = document.createElement('li');
+                var text = document.createElement('p');
+                text.innerHTML = data.message;
+                li.setAttribute("class", "li-chat");
+                avatar.setAttribute('src', '/static/pictures/fillion.png'); 
+                li.appendChild(avatar);
+                li.appendChild(text);
+                document.getElementById('chat').appendChild(li);
+                break;
+            case 'byonce':
+                var avatar = document.createElement('img');
+                var li = document.createElement('li');
+                var text = document.createElement('p');
+                text.innerHTML = data.message;
+                li.setAttribute("class", "li-chat");
+                avatar.setAttribute('src', '/static/pictures/byonce.png');
+                li.appendChild(avatar);
+                li.appendChild(text);
+                document.getElementById('chat').appendChild(li);
+                break;
+            case 'donald':
+                var avatar = document.createElement('img');
+                var li = document.createElement('li');
+                var text = document.createElement('p');
+                text.innerHTML = data.message;
+                li.setAttribute("class", "li-chat");
+                avatar.setAttribute('src', '/static/pictures/donald.png');
+                li.appendChild(avatar);
+                li.appendChild(text);
+                document.getElementById('chat').appendChild(li);
+                break;
+            case 'kim':
+                var avatar = document.createElement('img');
+                var li = document.createElement('li');
+                var text = document.createElement('p');
+                text.innerHTML = data.message;
+                li.setAttribute("class", "li-chat");
+                avatar.setAttribute('src', '/static/pictures/kim.png');
+                li.appendChild(avatar);
+                li.appendChild(text);
+                document.getElementById('chat').appendChild(li);
+                break;
+            default:
+                return;
+        }
     });
 
 
     function sendmessage() {
-        var input = $('input');
+        var input = $('input'), 
+            message_object = {
+                message : input.val(), 
+                user : name_user, 
+                avatar : my_avatar 
+            }; 
 
         if (input.val() == '') {
             return alert('please write something');
         }
+        
+        console.log(my_avatar); 
+        
+         switch (my_avatar) {
+            case 'fillion':
+                var avatar = document.createElement('img');
+                var li = document.createElement('li');
+                var text = document.createElement('p');
+                text.innerHTML = input.val();
+                li.setAttribute("class", "li-chat");// CHANGER LA CLASSE POUR DECALER A DROITE 
+                avatar.setAttribute('src', '/static/pictures/fillion.png');
+                li.appendChild(avatar);
+                li.appendChild(text);
+                document.getElementById('chat').appendChild(li);
+                break;
+            case 'byonce':
+                var avatar = document.createElement('img');
+                var li = document.createElement('li');
+                var text = document.createElement('p');
+                text.innerHTML = input.val();
+                li.setAttribute("class", "li-chat");
+                avatar.setAttribute('src', '/static/pictures/byonce.png');// CHANGER LA CLASSE POUR DECALER A DROITE
+                li.appendChild(avatar);
+                li.appendChild(text);
+                document.getElementById('chat').appendChild(li);
+                break;
+            case 'donald':
+                var avatar = document.createElement('img');
+                var li = document.createElement('li');
+                var text = document.createElement('p');
+                text.innerHTML = input.val();
+                li.setAttribute("class", "li-chat");
+                li.appendChild(avatar);
+                li.appendChild(text);
+                avatar.setAttribute('src', '/static/pictures/donald.png');
+                document.getElementById('chat').appendChild(li);
+                break;
+            case 'kim':
+                var avatar = document.createElement('img');
+                var li = document.createElement('li');
+                var text = document.createElement('p');
+                text.innerHTML = input.val();
+                li.setAttribute("class", "li-chat");
+                avatar.setAttribute('src', '/static/pictures/kim.png');
+                li.appendChild(avatar);
+                li.appendChild(text);
+                document.getElementById('chat').appendChild(li);
+                break;
+            default:
+                return;
+        }
 
-        socket.emit('message', input.val())
+        socket.emit('message', message_object)
         input.val('');
     }
 

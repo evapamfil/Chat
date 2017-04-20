@@ -20,7 +20,7 @@ io.on('connection', function (socket) {
 
     socket.on('message', function (data) {
         console.log('receive', data);
-        io.emit('newmessage', data);
+        socket.broadcast.emit('newmessage', data);
     });
 
     socket.on('user_avatar', function (data) {
@@ -29,12 +29,6 @@ io.on('connection', function (socket) {
         i++;
         io.emit('user_avatar', tab_user);
     });
-
-    socket.on('user_avatar', function (data) {
-        console.log(data);
-        data = data;
-        io.emit('user_avatar', data)
-    })
 });
 
 app.use('/static/css', express.static(__dirname + '/public/css'));
