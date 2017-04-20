@@ -83,7 +83,23 @@ $(document).ready(function () {
         var text = document.createElement('p');
         text.innerHTML = toto;
         li.setAttribute("class", "li-chat");
-        avatar.setAttribute("src", "/static/pictures/byonce.png");
+
+        if (my_avatar == 'byonce') {
+            avatar.setAttribute("src", "/static/pictures/byonce.png");
+        }
+
+        if (my_avatar == 'fillion') {
+            avatar.setAttribute("src", "/static/pictures/fillion.png");
+        }
+
+        if (my_avatar == 'donald') {
+            avatar.setAttribute("src", "/static/pictures/donald.png");
+        }
+
+        if (my_avatar == 'kim') {
+            avatar.setAttribute("src", "/static/pictures/kim.png");
+        }
+
         li.appendChild(avatar);
         li.appendChild(text);
         document.getElementById('chat').appendChild(li);
@@ -126,6 +142,7 @@ $(document).ready(function () {
             $('#section-right').css('background-size', '');
             $('input').css('background-color', '#656464');
             $('[placeholder]').css('color', '#ffffff');
+            $('input').css('color', 'white');
             $('button').css('background-color', '#656464');
             $('#button').css('background-color', '#656464');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
@@ -146,6 +163,7 @@ $(document).ready(function () {
             $('#section-right').css('background-image', 'url(/static/pictures/space.jpg)');
             $('#section-right').css('background-size', 'cover');
             $('input').css('background-color', '#636A89');
+            $('input').css('color', 'white');
             $('button').css('background-color', '#636A89');
             $('#button').css('background-color', '#636A89');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
@@ -166,6 +184,7 @@ $(document).ready(function () {
             $('#section-right').css('background-image', 'url(/static/pictures/jungle.jpg)');
             $('#section-right').css('background-size', 'cover');
             $('input').css('background-color', '#86B64B');
+            $('input').css('color', 'white');
             $('button').css('background-color', '#86B64B');
             $('#button').css('background-color', '#86B64B');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
@@ -185,6 +204,7 @@ $(document).ready(function () {
             $('#section-right').css('background-image', 'url(/static/pictures/savana.jpg)');
             $('#section-right').css('background-size', 'cover');
             $('input').css('background-color', '#BB582A');
+            $('input').css('color', 'white');
             $('button').css('background-color', '#BB582A');
             $('#button').css('background-color', '#BB582A');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
@@ -204,6 +224,7 @@ $(document).ready(function () {
             $('#section-right').css('background-image', 'url(/static/pictures/sea.jpg)');
             $('#section-right').css('background-size', 'cover');
             $('input').css('background-color', '#1DA3F7');
+            $('input').css('color', 'white');
             $('button').css('background-color', '#1DA3F7');
             $('#button').css('background-color', '#1DA3F7');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
@@ -214,15 +235,16 @@ $(document).ready(function () {
     $('#light').on({
         'click': function () {
             $('#logo').attr('src', '/static/pictures/LOGO-moodchat.png');
+            $('header').css('background-color', '#faf7f7')
             $('h1').css('color', '#ffba00');
             $('h2').css('color', '#ffba00');
             $('.theme').css('color', '#000000');
             $('#name').css('color', '#ffba00');
-            $('header').css('background-color', '#ffffff');
             $('#section-left').css('background-color', '#f0f0f0');
             $('#section-right').css('background-image', 'url(/static/pictures/light.jpg)');
             $('#section-right').css('background-size', '');
             $('input').css('background-color', '#ffffff');
+            $('input').css('color', 'black');
             $('button').css('background-color', '#ffffff');
             $('#button').css('background-color', '#ffffff');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%201.png)');
