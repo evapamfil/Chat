@@ -11,6 +11,8 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+var tab_user = []; 
+var i = 0; 
 
 io.on('connection', function(socket, name, avatar) {
     console.log('New connection on socket');
@@ -23,7 +25,9 @@ io.on('connection', function(socket, name, avatar) {
     
     socket.on('user_avatar', function(data) {
         console.log(data); 
-        io.volatile.emit('user_avatar', data); 
+        tab_user[i] = data; 
+        i++; 
+        io.emit('user_avatar', tab_user); 
     });
 });
 
@@ -40,5 +44,5 @@ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/views/index.html');
 });
 
-server.listen(1337);
-console.log('server listening on port 1337');
+server.listen(8080);
+console.log('server listening on port 8080');
