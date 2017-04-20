@@ -84,21 +84,31 @@ $(document).ready(function () {
         text.innerHTML = toto;
         li.setAttribute("class", "li-chat");
 
-        if (my_avatar == 'byonce') {
-            avatar.setAttribute("src", "/static/pictures/byonce.png");
-        }
+        send();
+        socket.on('user_avatar', function (data) {
+            for (var i = 0; i < data.length; i++) {
+                if (name_user != data[i].user && my_avatar == 'byonce') {
+                    avatar.setAttribute("src", "/static/pictures/byonce.png");
+                    console.log('hi');
+                }
 
-        if (my_avatar == 'fillion') {
-            avatar.setAttribute("src", "/static/pictures/fillion.png");
-        }
+                if (name_user != data[i].user && my_avatar == 'fillion') {
+                    avatar.setAttribute("src", "/static/pictures/fillion.png");
+                    console.log('hi');
+                }
 
-        if (my_avatar == 'donald') {
-            avatar.setAttribute("src", "/static/pictures/donald.png");
-        }
+                if (name_user != data[i].user && my_avatar == 'donald') {
+                    avatar.setAttribute("src", "/static/pictures/donald.png");
+                    console.log('hi');
+                }
 
-        if (my_avatar == 'kim') {
-            avatar.setAttribute("src", "/static/pictures/kim.png");
-        }
+                if (name_user != data[i].user && my_avatar == 'kim') {
+                    avatar.setAttribute("src", "/static/pictures/kim.png");
+                    console.log('hi');
+                }
+            }
+
+        })
 
         li.appendChild(avatar);
         li.appendChild(text);
