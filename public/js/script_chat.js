@@ -7,7 +7,7 @@
 #usage            : JAVASCRIPT
 #notes            : 
 =============================================================*/
-$(document).ready(function() {
+$(document).ready(function () {
     /* Script for Socket */
     //COOKIE
     function getCookie(name) {
@@ -22,10 +22,16 @@ $(document).ready(function() {
         return null;
     }
 
+    function eraseCookie(name) {
+        setCookie(name, "", -1);
+    }
+
     //SOCKET
-    var socket = io('http://localhost:1337');
+    var socket = io('https://mood-chat-anthony91.c9users.io:8080/');
     var name_user = getCookie("user");
+    eraseCookie("user");
     var my_avatar = getCookie("avatar");
+    eraseCookie("avatar");
 
     function send() {
         socket.emit('user_avatar', {
@@ -34,68 +40,207 @@ $(document).ready(function() {
         });
     }
 
-    socket.on('connect', function() {
+    socket.on('connect', function () {
         console.log('Nouveau socket!!!!');
         console.log(socket.id); // '65p5..'
         send();
     });
 
-    socket.on('response', function(data) {
+    socket.on('response', function (data) {
         console.log('Client : Response received: ');
         console.log(data);
     });
 
     //AVATAR AND NAME OF USER
-    socket.on('user_avatar', function(data) {
-        if (name_user != data.user) {
-            $("#name").html(data.user);
+    socket.on('user_avatar', function (data) {
+        for (var i = 0; i < data.length; i++) {
+            if (name_user != data[i].user) {
 
-            switch (data.avatar) {
-                case 'fillion':
-                    $("#user").attr('src', '/static/pictures/fillion.png');
-                    break;
-                case 'beyonce':
-                    $("#user").attr('src', '/static/pictures/byonce.png');
-                    break;
-                case 'donald':
-                    $("#user").attr('src', '/static/pictures/donald.png');
-                    break;
-                case 'kim':
-                    $("#user").attr('src', '/static/pictures/kim.png');
-                    break;
-                default:
-                    return;
+                switch (data[i].avatar) {
+                    case 'fillion':
+                        $("#user").append('<img src="/static/pictures/fillion.png" alt="user">');
+                        $("#user").append('<p>' + data[i].user + '</p>');
+                        break;
+                    case 'beyonce':
+                        $("#user").append('<img src="/static/pictures/byonce.png" alt="user">');
+                        $("#user").append('<p>' + data[i].user + '</p>');
+                        break;
+                    case 'donald':
+                        $("#user").append('<img src="/static/pictures/donald.png" alt="user">');
+                        $("#user").append('<p>' + data[i].user + '</p>');
+                        break;
+                    case 'kim':
+                        $("#user").append('<img src="/static/pictures/kim.png" alt="user">');
+                        $("#user").append('<p>' + data[i].user + '</p>');
+                        break;
+                    default:
+                        return;
+                }
             }
         }
     });
 
     //SEND A MESSAGE
-    socket.on('newmessage', function(toto) {
-       console.log('newmessage', toto)
-       var avatar = document.createElement('img');
-       var li = document.createElement('li');
-       var text = document.createElement('p');
-       text.innerHTML = toto;
-       li.setAttribute("class", "li-chat");
-       avatar.setAttribute("src", "/static/pictures/byonce.png");
-       li.appendChild(avatar);
-       li.appendChild(text);
-       document.getElementById('chat').appendChild(li);
+    socket.on('newmessage', function (data) {
+        switch (data.avatar) {
+            case 'fillion':
+                var avatar = document.createElement('img');
+                var li = document.createElement('li');
+                var text_user = document.createElement('span');
+                var text = document.createElement('p');
+                
+                text.innerHTML = data.message;
+                li.setAttribute("class", "li-chat");
+                avatar.setAttribute('src', '/static/pictures/fillion.png');
+                li.appendChild(avatar);
+                li.appendChild(text);
+                text.appendChild(text_user);
+                text_user.innerHTML = data.user; 
+                document.getElementById('chat').appendChild(li);
+                console.log(data.user);
+                break;
+            case 'byonce':
+                var avatar = document.createElement('img');
+                var li = document.createElement('li');
+                var text_user = document.createElement('span');
+                var text = document.createElement('p');
+                
+                text.innerHTML = data.message;
+                li.setAttribute("class", "li-chat");
+                avatar.setAttribute('src', '/static/pictures/byonce.png');
+                li.appendChild(avatar);
+                li.appendChild(text);
+                text.appendChild(text_user);
+                text_user.innerHTML = data.user; 
+                document.getElementById('chat').appendChild(li);
+                console.log(data.user);
+                break;
+            case 'donald':
+                var avatar = document.createElement('img');
+                var li = document.createElement('li');
+                var text_user = document.createElement('span');
+                var text = document.createElement('p');
+                
+                text.innerHTML = data.message;
+                li.setAttribute("class", "li-chat");
+                avatar.setAttribute('src', '/static/pictures/donald.png');
+                li.appendChild(avatar);
+                li.appendChild(text);
+                text.appendChild(text_user);
+                text_user.innerHTML = data.user; 
+                document.getElementById('chat').appendChild(li);
+                console.log(data.user);
+                break;
+            case 'kim':
+                var avatar = document.createElement('img');
+                var li = document.createElement('li');
+                var text_user = document.createElement('span');
+                var text = document.createElement('p');
+                
+                text.innerHTML = data.message;
+                li.setAttribute("class", "li-chat");
+                avatar.setAttribute('src', '/static/pictures/kim.png');
+                li.appendChild(avatar);
+                li.appendChild(text);
+                text.appendChild(text_user);
+                text_user.innerHTML = data.user; 
+                document.getElementById('chat').appendChild(li);
+                console.log(data.user);
+                break;
+            default:
+                return;
+        }
     });
 
 
     function sendmessage() {
-        var input = $('input');
+        var input = $('input'),
+            message_object = {
+                message: input.val(),
+                user: name_user,
+                avatar: my_avatar
+            };
 
         if (input.val() == '') {
             return alert('please write something');
         }
 
-        socket.emit('message', input.val())
+        switch (my_avatar) {
+            case 'fillion':
+                var avatar = document.createElement('img');
+                var li = document.createElement('li');
+                var text_user = document.createElement('span')
+                var text = document.createElement('p');
+                
+                text.innerHTML = input.val();
+                li.setAttribute("class", "right-li");
+                avatar.setAttribute('src', '/static/pictures/fillion.png');
+                li.appendChild(text);
+                text.appendChild(text_user);
+                text_user.innerHTML = name_user; 
+                li.appendChild(avatar);
+                document.getElementById('chat').appendChild(li);
+                console.log(name_user)
+                break;
+            case 'byonce':
+                var avatar = document.createElement('img');
+                var li = document.createElement('li');
+                var text_user = document.createElement('span')
+                var text = document.createElement('p');
+                
+                text.innerHTML = input.val();
+                li.setAttribute("class", "right-li");
+                avatar.setAttribute('src', '/static/pictures/byonce.png');
+                li.appendChild(text);
+                text.appendChild(text_user);
+                text_user.innerHTML = name_user; 
+                li.appendChild(avatar);
+                document.getElementById('chat').appendChild(li);
+                console.log(name_user)
+                break;
+            case 'donald':
+                var avatar = document.createElement('img');
+                var li = document.createElement('li');
+                var text_user = document.createElement('span')
+                var text = document.createElement('p');
+                
+                text.innerHTML = input.val();
+                li.setAttribute("class", "right-li");
+                avatar.setAttribute('src', '/static/pictures/donald.png');
+                li.appendChild(text);
+                text.appendChild(text_user);
+                text_user.innerHTML = name_user;  
+                li.appendChild(avatar);
+                document.getElementById('chat').appendChild(li);
+                console.log(name_user)
+                break;
+            case 'kim':
+                var avatar = document.createElement('img');
+                var li = document.createElement('li');
+                var text_user = document.createElement('span');
+                var text = document.createElement('p');
+                
+                text.innerHTML = input.val();
+                li.setAttribute("class", "right-li");
+                avatar.setAttribute('src', '/static/pictures/kim.png');
+                li.appendChild(text);
+                text.appendChild(text_user);
+                text_user.innerHTML = name_user; 
+                li.appendChild(avatar);
+                document.getElementById('chat').appendChild(li);
+                console.log(name_user)
+                break;
+            default:
+                return;
+        }
+
+        socket.emit('message', message_object)
         input.val('');
+        $('#emoji').css('display', 'none');
+        $('#gif').css('display', 'none');
     }
 
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.keyCode === 13) {
             sendmessage();
         }
@@ -108,7 +253,7 @@ $(document).ready(function() {
 
     //FRONT
     $('#dark').on({
-        'click': function() {
+        'click': function () {
             $('#logo').attr('src', '/static/pictures/LOGO-moodchat-white.png');
             $('h1').css('color', '#ffffff');
             $('h2').css('color', '#ffffff');
@@ -120,6 +265,7 @@ $(document).ready(function() {
             $('#section-right').css('background-size', '');
             $('input').css('background-color', '#656464');
             $('[placeholder]').css('color', '#ffffff');
+            $('input').css('color', 'white');
             $('button').css('background-color', '#656464');
             $('#button').css('background-color', '#656464');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
@@ -129,7 +275,7 @@ $(document).ready(function() {
     });
 
     $('#space').on({
-        'click': function() {
+        'click': function () {
             $('#logo').attr('src', '/static/pictures/LOGO-moodchat-white.png');
             $('h1').css('color', '#ffffff');
             $('h2').css('color', '#ffffff');
@@ -140,6 +286,7 @@ $(document).ready(function() {
             $('#section-right').css('background-image', 'url(/static/pictures/space.jpg)');
             $('#section-right').css('background-size', 'cover');
             $('input').css('background-color', '#636A89');
+            $('input').css('color', 'white');
             $('button').css('background-color', '#636A89');
             $('#button').css('background-color', '#636A89');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
@@ -149,7 +296,7 @@ $(document).ready(function() {
         }
     });
     $('#jungle').on({
-        'click': function() {
+        'click': function () {
             $('#logo').attr('src', '/static/pictures/LOGO-moodchat-white.png');
             $('h1').css('color', '#ffffff');
             $('h2').css('color', '#ffffff');
@@ -160,6 +307,7 @@ $(document).ready(function() {
             $('#section-right').css('background-image', 'url(/static/pictures/jungle.jpg)');
             $('#section-right').css('background-size', 'cover');
             $('input').css('background-color', '#86B64B');
+            $('input').css('color', 'white');
             $('button').css('background-color', '#86B64B');
             $('#button').css('background-color', '#86B64B');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
@@ -168,7 +316,7 @@ $(document).ready(function() {
         }
     });
     $('#savana').on({
-        'click': function() {
+        'click': function () {
             $('#logo').attr('src', '/static/pictures/LOGO-moodchat-white.png');
             $('h1').css('color', '#ffffff');
             $('h2').css('color', '#ffffff');
@@ -179,6 +327,7 @@ $(document).ready(function() {
             $('#section-right').css('background-image', 'url(/static/pictures/savana.jpg)');
             $('#section-right').css('background-size', 'cover');
             $('input').css('background-color', '#BB582A');
+            $('input').css('color', 'white');
             $('button').css('background-color', '#BB582A');
             $('#button').css('background-color', '#BB582A');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
@@ -187,7 +336,7 @@ $(document).ready(function() {
         }
     });
     $('#sea').on({
-        'click': function() {
+        'click': function () {
             $('#logo').attr('src', '/static/pictures/LOGO-moodchat.png');
             $('h1').css('color', '#ffba00');
             $('h2').css('color', '#ffba00');
@@ -198,6 +347,7 @@ $(document).ready(function() {
             $('#section-right').css('background-image', 'url(/static/pictures/sea.jpg)');
             $('#section-right').css('background-size', 'cover');
             $('input').css('background-color', '#1DA3F7');
+            $('input').css('color', 'white');
             $('button').css('background-color', '#1DA3F7');
             $('#button').css('background-color', '#1DA3F7');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
@@ -206,17 +356,18 @@ $(document).ready(function() {
         }
     });
     $('#light').on({
-        'click': function() {
+        'click': function () {
             $('#logo').attr('src', '/static/pictures/LOGO-moodchat.png');
+            $('header').css('background-color', '#faf7f7')
             $('h1').css('color', '#ffba00');
             $('h2').css('color', '#ffba00');
             $('.theme').css('color', '#000000');
             $('#name').css('color', '#ffba00');
-            $('header').css('background-color', '#ffffff');
             $('#section-left').css('background-color', '#f0f0f0');
             $('#section-right').css('background-image', 'url(/static/pictures/light.jpg)');
             $('#section-right').css('background-size', '');
             $('input').css('background-color', '#ffffff');
+            $('input').css('color', 'black');
             $('button').css('background-color', '#ffffff');
             $('#button').css('background-color', '#ffffff');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%201.png)');
@@ -227,7 +378,8 @@ $(document).ready(function() {
     });
 
     //EMOJI
-    $('#button-emoji').on({'click': function() {
+    $('#button-emoji').on({
+        'click': function () {
             if (clik_emoji == 0) {
                 $('#emoji').css('display', 'block');
                 $('#gif').css('display', 'none');
@@ -241,223 +393,224 @@ $(document).ready(function() {
 
     //SEND EMOJI
 
-    $("#emoji1").click(function() {
+    $("#emoji1").click(function () {
         var _smiley = $('#emoji1').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji2").click(function() {
+    $("#emoji2").click(function () {
         var _smiley = $('#emoji2').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji3").click(function() {
+    $("#emoji3").click(function () {
         var _smiley = $('#emoji3').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji4").click(function() {
+    $("#emoji4").click(function () {
         var _smiley = $('#emoji4').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji5").click(function() {
+    $("#emoji5").click(function () {
         var _smiley = $('#emoji5').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji6").click(function() {
+    $("#emoji6").click(function () {
         var _smiley = $('#emoji6').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji7").click(function() {
+    $("#emoji7").click(function () {
         var _smiley = $('#emoji7').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji8").click(function() {
+    $("#emoji8").click(function () {
         var _smiley = $('#emoji8').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji9").click(function() {
+    $("#emoji9").click(function () {
         var _smiley = $('#emoji9').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji10").click(function() {
+    $("#emoji10").click(function () {
         var _smiley = $('#emoji10').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji11").click(function() {
+    $("#emoji11").click(function () {
         var _smiley = $('#emoji11').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji12").click(function() {
+    $("#emoji12").click(function () {
         var _smiley = $('#emoji12').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji13").click(function() {
+    $("#emoji13").click(function () {
         var _smiley = $('#emoji13').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji14").click(function() {
+    $("#emoji14").click(function () {
         var _smiley = $('#emoji14').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji15").click(function() {
+    $("#emoji15").click(function () {
         var _smiley = $('#emoji15').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji16").click(function() {
+    $("#emoji16").click(function () {
         var _smiley = $('#emoji16').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji17").click(function() {
+    $("#emoji17").click(function () {
         var _smiley = $('#emoji17').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji18").click(function() {
+    $("#emoji18").click(function () {
         var _smiley = $('#emoji18').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji19").click(function() {
+    $("#emoji19").click(function () {
         var _smiley = $('#emoji19').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji20").click(function() {
+    $("#emoji20").click(function () {
         var _smiley = $('#emoji20').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
-    $("#emoji20").click(function() {
+    $("#emoji20").click(function () {
         var _smiley = $('#emoji20').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji21").click(function() {
+    $("#emoji21").click(function () {
         var _smiley = $('#emoji21').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji22").click(function() {
+    $("#emoji22").click(function () {
         var _smiley = $('#emoji22').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji23").click(function() {
+    $("#emoji23").click(function () {
         var _smiley = $('#emoji23').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji24").click(function() {
+    $("#emoji24").click(function () {
         var _smiley = $('#emoji24').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji25").click(function() {
+    $("#emoji25").click(function () {
         var _smiley = $('#emoji25').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji26").click(function() {
+    $("#emoji26").click(function () {
         var _smiley = $('#emoji26').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji27").click(function() {
+    $("#emoji27").click(function () {
         var _smiley = $('#emoji27').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji28").click(function() {
+    $("#emoji28").click(function () {
         var _smiley = $('#emoji28').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji29").click(function() {
+    $("#emoji29").click(function () {
         var _smiley = $('#emoji29').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $("#emoji30").click(function() {
+    $("#emoji30").click(function () {
         var _smiley = $('#emoji30').find('img');
         var smiley = _smiley[0].outerHTML;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
-    $('#button-gif').on({'click': function() {
+    $('#button-gif').on({
+        'click': function () {
             if (clik_gif == 0) {
                 $('#gif').css('display', 'block');
                 $('#emoji').css('display', 'none');
@@ -481,7 +634,7 @@ $(document).ready(function() {
 
 
             _img.on({
-                'click': function() {
+                'click': function () {
                     $('input').val('<img src="' + $(this).attr('src') + '"/>');
                 }
             });
@@ -489,9 +642,9 @@ $(document).ready(function() {
     }
 
     //API GIPHY
-    var url_giphy = "http://api.giphy.com/v1/stickers/search?q=cat&api_key=dc6zaTOxFJmzC ";
+    var url_giphy = "https://api.giphy.com/v1/stickers/search?q=cat&api_key=dc6zaTOxFJmzC ";
 
-    $.get(url_giphy, function(data) {
+    $.get(url_giphy, function (data) {
 
         list_gif(data.data);
 

@@ -14,11 +14,13 @@
     src: url(/static/font/Gotham-Medium.otf);
 }
 
-body{
-    overflow: hidden; 
+body {
+    overflow: hidden;
 }
 
-/*Swiper*/ 
+
+/*Swiper*/
+
 .swiper-container {
     height: auto;
     width: 100%;
@@ -43,37 +45,39 @@ body{
 }
 
 #light {
-    width: 100%; 
-    height: auto; 
-    background-image: url(/static/pictures/light.jpg); 
+    width: 100%;
+    height: auto;
+    background-image: url(/static/pictures/light.jpg);
 }
 
 #black {
-    width: 100%; 
-    height: auto; 
-    background-image: url(/static/pictures/black.jpg); 
+    width: 100%;
+    height: auto;
+    background-image: url(/static/pictures/black.jpg);
 }
-/*Inscription*/ 
 
-#start-chat{
+
+/*Inscription*/
+
+#start-chat {
     width: 379.5px;
     height: 556px;
     position: absolute;
     top: 50%;
     left: 50%;
+    -webkit-transform: translateY(-50%) translateX(-50%);
     transform: translateY(-50%) translateX(-50%);
     z-index: 2;
     background-color: rgba(255, 255, 255, 0.95);
     padding: 20px;
-    
-    -webkit-animation : start-opacity 1s linear forwards; 
-    animation : start-opacity 1s linear forwards;
+    -webkit-animation: start-opacity 1s linear forwards;
+    animation: start-opacity 1s linear forwards;
     opacity: 0;
     box-shadow: rgba(0, 0, 0, 0.37) 0px 0px 30px;
 }
 
-#logo{
-    width: 100%; 
+#logo {
+    width: 100%;
 }
 
 #name {
@@ -88,18 +92,18 @@ body{
     font-size: 16px;
     margin-top: 40px;
     left: 50%;
+    -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     position: relative;
     background-color: transparent;
 }
 
-
 #start-chat p {
-    font-family: "Gotham-light"; 
-    font-size: 20px; 
-    color: #ffba00; 
-    text-align: center; 
-    margin-top: 35px; 
+    font-family: "Gotham-light";
+    font-size: 20px;
+    color: #ffba00;
+    text-align: center;
+    margin-top: 35px;
 }
 
 #start-chat div {
@@ -115,13 +119,13 @@ body{
 }
 
 #start-chat div>ul>li {
-    list-style: none; 
-    display: inline-block; 
-    margin-right: 15px; 
+    list-style: none;
+    display: inline-block;
+    margin-right: 15px;
 }
 
-#start-chat div>ul>li:last-child { 
-    margin-right: 0px; 
+#start-chat div>ul>li:last-child {
+    margin-right: 0px;
 }
 
 .img_avatar {
@@ -129,7 +133,7 @@ body{
 }
 
 .img_avatar:active {
-    border : #ffba00 2px solid;
+    border: #ffba00 2px solid;
     border-radius: 35px;
 }
 
@@ -150,9 +154,9 @@ body{
     font-size: 35px;
     position: relative;
     left: 50%;
+    -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
-    margin-top: 20px; 
-    
+    margin-top: 20px;
     display: inline-block;
     vertical-align: middle;
     box-shadow: 0 0 1px transparent;
@@ -163,9 +167,12 @@ body{
     transition-property: color, background-color;
 }
 
+
 /* Back Pulse */
 
-#start-chat a:hover, #start-chat a:focus, #start-chat a:active {
+#start-chat a:hover,
+#start-chat a:focus,
+#start-chat a:active {
     -webkit-animation-name: hvr-back-pulse;
     animation-name: hvr-back-pulse;
     -webkit-animation-duration: 1s;
@@ -186,20 +193,31 @@ body{
 /*KEYFRAMES*/
 
 @-webkit-keyframes hvr-back-pulse {
-  50% {background-color: rgba(255, 147, 0, 0.75);}
+    50% {
+        background-color: rgba(255, 147, 0, 0.75);
+    }
 }
 
 @keyframes hvr-back-pulse {
-  50% {background-color: rgba(255, 147, 0, 0.75);}
+    50% {
+        background-color: rgba(255, 147, 0, 0.75);
+    }
 }
 
-@-webkit-keyframes start-opacity{
-  from {opacity: 0;}
-  to {opacity: 1;}
+@-webkit-keyframes start-opacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-@keyframes start-opacity{
-  from {opacity: 0;}
-  to {opacity: 1;}
+@keyframes start-opacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
-

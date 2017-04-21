@@ -5,167 +5,176 @@
     <meta charset="UTF-8">
     <title>Mood Chat</title>
     <link rel="stylesheet" href="/static/css/page.css">
+    <link rel="icon" type="image/png" href="/static/pictures/favicon.png" />
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
     <script alt="JQuery Library" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var FullBodyHeight = function() {
+                $('body').css('height', window.innerHeight);
+                $('#msg').css('height', window.innerHeight - 100);
+            }
+            setInterval(FullBodyHeight, 0);
+        });
+
+    </script>
 </head>
 
 <body>
-        <header>
-            <a href="/static/index.html"><img src="/static/pictures/LOGO-moodchat.png" alt="logo" id="logo"></a>
-            <div id="user">
-                <img src="/static/pictures/byonce.png" alt="user">
-                <p>NAME</p>
+    <header>
+        <a href="/static/index.html"><img src="/static/pictures/LOGO-moodchat.png" alt="logo" id="logo"></a>
+        <div id='user'></div>
+    </header>
+
+    <section id="msg">
+        <article id="section-left">
+
+            <h1>Design</h1>
+
+            <ul id="first-column">
+                <li><img src="/static/pictures/small-light.jpg" alt="light" id="light"><br>
+                    <p class="theme">Light</p>
+                </li>
+                <li><img src="/static/pictures/small-sea.jpg" alt="Sea" id="sea"><br>
+                    <p class="theme">Sea</p>
+                </li>
+                <li><img src="/static/pictures/small-galaxy.jpg" alt="Space" id="space"><br>
+                    <p class="theme">Space</p>
+                </li>
+            </ul>
+
+            <ul id="second-column">
+                <li><img src="/static/pictures/small-black.png" alt="Dark" id="dark"><br>
+                    <p class="theme">Dark</p>
+                </li>
+                <li><img src="/static/pictures/small-jungle.jpg" alt="Jungle" id="jungle"><br>
+                    <p class="theme">Jungle</p>
+                </li>
+                <li><img src="/static/pictures/small-savana.jpg" alt="Savana" id="savana"><br>
+                    <p class="theme">Savana</p>
+                </li>
+            </ul>
+
+            <h2>Color</h2>
+
+            <ul id="first-line">
+                <li>
+                    <div class="color" id="red"></div>
+                </li>
+                <li>
+                    <div class="color" id="orange"></div>
+                </li>
+                <li>
+                    <div class="color" id="yellow"></div>
+                </li>
+                <li>
+                    <div class="color" id="green"></div>
+                </li>
+                <li>
+                    <div class="color" id="turquoise"></div>
+                </li>
+                <li>
+                    <div class="color" id="light-blue"></div>
+                </li>
+                <li>
+                    <div class="color" id="blue"></div>
+                </li>
+                <li>
+                    <div class="color" id="dark-blue"></div>
+                </li>
+
+            </ul>
+            <ul id="second-line">
+                <li>
+                    <div class="color" id="dark-blue1"></div>
+                </li>
+                <li>
+                    <div class="color" id="purple"></div>
+                </li>
+                <li>
+                    <div class="color" id="light-purple"></div>
+                </li>
+                <li>
+                    <div class="color" id="pink"></div>
+                </li>
+                <li>
+                    <div class="color" id="light-pink"></div>
+                </li>
+                <li>
+                    <div class="color" id="dark-color"></div>
+                </li>
+                <li>
+                    <div class="color" id="grey"></div>
+                </li>
+                <li>
+                    <div class="color" id="white"></div>
+                </li>
+
+            </ul>
+
+        </article>
+        <article id="section-right">
+            <ul id="chat"></ul>
+            <div id="gif">
+                <ul></ul>
             </div>
-        </header>
-
-        <section id="msg">
-            <article id="section-left">
-
-                <h1>Design</h1>
-
-                <ul id="first-column">
-                    <li><img src="/static/pictures/small-%20light.png" alt="light" id="light"><br>
-                        <p class="theme">Light</p>
-                    </li>
-                    <li><img src="/static/pictures/small-sea.png" alt="Sea" id="sea"><br>
-                        <p class="theme">Sea</p>
-                    </li>
-                    <li><img src="/static/pictures/galaxy.png" alt="Space" id="space"><br>
-                        <p class="theme">Space</p>
-                    </li>
+            <div id="emoji">
+                <ul class="emoji-list">
+                    <li id="emoji1"><img src="/static/pictures/emoji/emoji1.png" class="emoji" data-smiley=":)"></li>
+                    <li id="emoji2"><img src="/static/pictures/emoji/emoji2.png" class="emoji" data-smiley=";)"></li>
+                    <li id="emoji3"><img src="/static/pictures/emoji/emoji3.png" class="emoji"></li>
+                    <li id="emoji4"><img src="/static/pictures/emoji/emoji4.png" class="emoji"></li>
+                    <li id="emoji5"><img src="/static/pictures/emoji/emoji5.png" class="emoji"></li>
+                    <li id="emoji6"><img src="/static/pictures/emoji/emoji6.png" class="emoji"></li>
+                </ul>
+                <ul class="emoji-list">
+                    <li id="emoji7"><img src="/static/pictures/emoji/emoji7.png" class="emoji"></li>
+                    <li id="emoji8"><img src="/static/pictures/emoji/emoji8.png" class="emoji"></li>
+                    <li id="emoji9"><img src="/static/pictures/emoji/emoji9.png" class="emoji"></li>
+                    <li id="emoji10"><img src="/static/pictures/emoji/emoji10.png" class="emoji"></li>
+                    <li id="emoji11"><img src="/static/pictures/emoji/emoji11.png" class="emoji"></li>
+                    <li id="emoji12"><img src="/static/pictures/emoji/emoji12.png" class="emoji"></li>
+                </ul>
+                <ul class="emoji-list">
+                    <li id="emoji13"><img src="/static/pictures/emoji/emoji13.png" class="emoji"></li>
+                    <li id="emoji14"><img src="/static/pictures/emoji/emoji14.png" class="emoji"></li>
+                    <li id="emoji15"><img src="/static/pictures/emoji/emoji15.png" class="emoji"></li>
+                    <li id="emoji16"><img src="/static/pictures/emoji/emoji16.png" class="emoji"></li>
+                    <li id="emoji17"><img src="/static/pictures/emoji/emoji17.png" class="emoji"></li>
+                    <li id="emoji18"><img src="/static/pictures/emoji/emoji18.png" class="emoji"></li>
+                </ul>
+                <ul class="emoji-list">
+                    <li id="emoji19"><img src="/static/pictures/emoji/emoji19.png" class="emoji"></li>
+                    <li id="emoji20"><img src="/static/pictures/emoji/emoji20.png" class="emoji"></li>
+                    <li id="emoji21"><img src="/static/pictures/emoji/emoji21.png" class="emoji"></li>
+                    <li id="emoji22"><img src="/static/pictures/emoji/emoji22.png" class="emoji"></li>
+                    <li id="emoji23"><img src="/static/pictures/emoji/emoji23.png" class="emoji"></li>
+                    <li id="emoji24"><img src="/static/pictures/emoji/emoji24.png" class="emoji"></li>
+                </ul>
+                <ul class="emoji-list">
+                    <li id="emoji25"><img src="/static/pictures/emoji/emoji25.png" class="emoji"></li>
+                    <li id="emoji26"><img src="/static/pictures/emoji/emoji26.png" class="emoji"></li>
+                    <li id="emoji27"><img src="/static/pictures/emoji/emoji27.png" class="emoji"></li>
+                    <li id="emoji28"><img src="/static/pictures/emoji/emoji28.png" class="emoji"></li>
+                    <li id="emoji29"><img src="/static/pictures/emoji/emoji29.png" class="emoji"></li>
+                    <li id="emoji30"><img src="/static/pictures/emoji/emoji30.png" class="emoji"></li>
                 </ul>
 
-                <ul id="second-column">
-                    <li><img src="/static/pictures/small-%20light.png" alt="Dark" id="dark"><br>
-                        <p class="theme">Dark</p>
-                    </li>
-                    <li><img src="/static/pictures/small-jungle.png" alt="Jungle" id="jungle"><br>
-                        <p class="theme">Jungle</p>
-                    </li>
-                    <li><img src="/static/pictures/small-savana.png" alt="Savana" id="savana"><br>
-                        <p class="theme">Savana</p>
-                    </li>
-                </ul>
-
-                <h2>Color</h2>
-
-                <ul id="first-line">
-                    <li>
-                        <div class="color" id="red"></div>
-                    </li>
-                    <li>
-                        <div class="color" id="orange"></div>
-                    </li>
-                    <li>
-                        <div class="color" id="yellow"></div>
-                    </li>
-                    <li>
-                        <div class="color" id="green"></div>
-                    </li>
-                    <li>
-                        <div class="color" id="turquoise"></div>
-                    </li>
-                    <li>
-                        <div class="color" id="light-blue"></div>
-                    </li>
-                    <li>
-                        <div class="color" id="blue"></div>
-                    </li>
-                    <li>
-                        <div class="color" id="dark-blue"></div>
-                    </li>
-
-                </ul>
-                <ul id="second-line">
-                    <li>
-                        <div class="color" id="dark-blue1"></div>
-                    </li>
-                    <li>
-                        <div class="color" id="purple"></div>
-                    </li>
-                    <li>
-                        <div class="color" id="light-purple"></div>
-                    </li>
-                    <li>
-                        <div class="color" id="pink"></div>
-                    </li>
-                    <li>
-                        <div class="color" id="light-pink"></div>
-                    </li>
-                    <li>
-                        <div class="color" id="dark-color"></div>
-                    </li>
-                    <li>
-                        <div class="color" id="grey"></div>
-                    </li>
-                    <li>
-                        <div class="color" id="white"></div>
-                    </li>
-
-                </ul>
-
-            </article>
-            <article id="section-right">
-                <ul id="chat"></ul>
-                <div id="gif">
-                  <ul></ul>
+            </div>
+            <article id="text">
+                <input value="" name="chat_message" type="text" placeholder="Votre message ..." />
+                <div id="button">
+                    <button id="button-gif"></button>
+                    <button id="button-emoji"></button>
+                    <button id="button-send"></button>
                 </div>
-                <div id="emoji">
-                    <ul class="emoji-list">
-                        <li id="emoji1"><img src="/static/pictures/emoji/emoji1.png" class="emoji" data-smiley=":)"></li>
-                        <li id="emoji2"><img src="/static/pictures/emoji/emoji2.png" class="emoji" data-smiley=";)"></li>
-                        <li id="emoji3"><img src="/static/pictures/emoji/emoji3.png" class="emoji"></li>
-                        <li id="emoji4"><img src="/static/pictures/emoji/emoji4.png" class="emoji"></li>
-                        <li id="emoji5"><img src="/static/pictures/emoji/emoji5.png" class="emoji"></li>
-                        <li id="emoji6"><img src="/static/pictures/emoji/emoji6.png" class="emoji"></li>
-                    </ul>
-                    <ul class="emoji-list">
-                        <li id="emoji7"><img src="/static/pictures/emoji/emoji7.png" class="emoji"></li>
-                        <li id="emoji8"><img src="/static/pictures/emoji/emoji8.png" class="emoji"></li>
-                        <li id="emoji9"><img src="/static/pictures/emoji/emoji9.png" class="emoji"></li>
-                        <li id="emoji10"><img src="/static/pictures/emoji/emoji10.png" class="emoji"></li>
-                        <li id="emoji11"><img src="/static/pictures/emoji/emoji11.png" class="emoji"></li>
-                        <li id="emoji12"><img src="/static/pictures/emoji/emoji12.png" class="emoji"></li>
-                    </ul>
-                    <ul class="emoji-list">
-                        <li id="emoji13"><img src="/static/pictures/emoji/emoji13.png" class="emoji"></li>
-                        <li id="emoji14"><img src="/static/pictures/emoji/emoji14.png" class="emoji"></li>
-                        <li id="emoji15"><img src="/static/pictures/emoji/emoji15.png" class="emoji"></li>
-                        <li id="emoji16"><img src="/static/pictures/emoji/emoji16.png" class="emoji"></li>
-                        <li id="emoji17"><img src="/static/pictures/emoji/emoji17.png" class="emoji"></li>
-                        <li id="emoji18"><img src="/static/pictures/emoji/emoji18.png" class="emoji"></li>
-                    </ul>
-                    <ul class="emoji-list">
-                        <li id="emoji19"><img src="/static/pictures/emoji/emoji19.png" class="emoji"></li>
-                        <li id="emoji20"><img src="/static/pictures/emoji/emoji20.png" class="emoji"></li>
-                        <li id="emoji21"><img src="/static/pictures/emoji/emoji21.png" class="emoji"></li>
-                        <li id="emoji22"><img src="/static/pictures/emoji/emoji22.png" class="emoji"></li>
-                        <li id="emoji23"><img src="/static/pictures/emoji/emoji23.png" class="emoji"></li>
-                        <li id="emoji24"><img src="/static/pictures/emoji/emoji24.png" class="emoji"></li>
-                    </ul>
-                    <ul class="emoji-list">
-                        <li id="emoji25"><img src="/static/pictures/emoji/emoji25.png" class="emoji"></li>
-                        <li id="emoji26"><img src="/static/pictures/emoji/emoji26.png" class="emoji"></li>
-                        <li id="emoji27"><img src="/static/pictures/emoji/emoji27.png" class="emoji"></li>
-                        <li id="emoji28"><img src="/static/pictures/emoji/emoji28.png" class="emoji"></li>
-                        <li id="emoji29"><img src="/static/pictures/emoji/emoji29.png" class="emoji"></li>
-                        <li id="emoji30"><img src="/static/pictures/emoji/emoji30.png" class="emoji"></li>
-                    </ul>
-
-                </div>
-                <article id="text">
-                    <input value="" name="chat_message" type="text" placeholder="Votre message ..."/>
-                    <div id="button">
-                        <button id="button-gif"></button>
-                        <button id="button-emoji"></button>
-                        <button id="button-send"></button>
-                    </div>
-                </article>
             </article>
-        </section>
-        
+        </article>
+    </section>
 
-        
+
+
 
     <script src="../static/js/script_chat.js"></script>
     <script src="/static/js/cookie.js"></script>
