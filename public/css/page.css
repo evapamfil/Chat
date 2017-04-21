@@ -26,18 +26,23 @@ header {
     height: 100px;
     width: 100%;
     background-color: #faf7f7;
+    position: relative;
 }
 
 #logo {
     width: 13%;
     margin-left: 32px;
-    float: left;
+    height: auto;
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
 }
 
 #user {
     top: 50%;
     position: relative;
     transform: translateY(-50%);
+    left: 21%;
 }
 
 #user img {

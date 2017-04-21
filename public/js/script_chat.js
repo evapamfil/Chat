@@ -27,7 +27,7 @@ $(document).ready(function () {
     }
 
     //SOCKET
-    var socket = io('https://mood-chat-anthony91.c9users.io:8080');
+    var socket = io('http://localhost:8080/');
     var name_user = getCookie("user");
     eraseCookie("user");
     var my_avatar = getCookie("avatar");

@@ -7,10 +7,10 @@
 #usage            : JAVASCRIPT / JQUERY
 #notes            : 
 =============================================================*/
-$(document).ready(function() {
-    
+$(document).ready(function () {
+
     var input_name = document.getElementById("name");
-    
+
     //SWIPER
     var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
@@ -23,14 +23,14 @@ $(document).ready(function() {
     });
 
     //INPUT
-    $("#button").click(function(e) {
+    $("#button").click(function (e) {
         if (input_name.value == "") {
             alert("To continue we need your name ! ;)")
         } else {
             var name = $("#name").val();
             var avatar = $('input[name=avatar]:checked').val();
-            setCookie("user",name,30);
-            setCookie("avatar",avatar,30);
+            setCookie("user", name, 30);
+            setCookie("avatar", avatar, 30);
             $("#button").attr('href', '/static/page.html')
         }
     });
@@ -39,7 +39,7 @@ $(document).ready(function() {
     var click = 0;
 
     //FILLION
-    $("#avatar_fillion").click(function() {
+    $("#avatar_fillion").click(function () {
         console.log("hi");
         $("#fillion").css("border", "#ffba00 2px solid");
         $("#fillion").css("border-radius", "35px");
@@ -57,7 +57,7 @@ $(document).ready(function() {
     });
 
     //BYONCE
-    $("#avatar_byonce").click(function() {
+    $("#avatar_byonce").click(function () {
         $("#byonce").css("border", "#ffba00 2px solid");
         $("#byonce").css("border-radius", "35px");
 
@@ -73,7 +73,7 @@ $(document).ready(function() {
     });
 
     //DONALD
-    $("#avatar_donald").click(function() {
+    $("#avatar_donald").click(function () {
         $("#donald").css("border", "#ffba00 2px solid");
         $("#donald").css("border-radius", "35px");
 
@@ -89,7 +89,7 @@ $(document).ready(function() {
     });
 
     //KIM
-    $("#avatar_kim").click(function() {
+    $("#avatar_kim").click(function () {
         $("#kim").css("border", "#ffba00 2px solid");
         $("#kim").css("border-radius", "35px");
 
@@ -107,13 +107,13 @@ $(document).ready(function() {
 
     //Hover Avatar
     //FILLION
-    $("#avatar_fillion").hover(function() {
+    $("#avatar_fillion").hover(function () {
         //IN
         $("#fillion").css("border", "#ffba00 2px solid");
         $("#fillion").css("border-radius", "35px");
 
         //OUT
-    }, function() {
+    }, function () {
         if (click == 1) {
             $("#fillion").css("border", "#ffba00 2px solid");
             $("#fillion").css("border-radius", "35px");
@@ -136,12 +136,12 @@ $(document).ready(function() {
     });
 
     //BYONCE
-    $("#avatar_byonce").hover(function() {
+    $("#avatar_byonce").hover(function () {
         //IN
         $("#byonce").css("border", "#ffba00 2px solid");
         $("#byonce").css("border-radius", "35px");
         //OUT
-    }, function() {
+    }, function () {
         if (click == 1) {
             $("#byonce").css("border", "#ffba00 2px solid");
             $("#byonce").css("border-radius", "35px");
@@ -163,12 +163,12 @@ $(document).ready(function() {
     });
 
     //TRUMP
-    $("#avatar_donald").hover(function() {
+    $("#avatar_donald").hover(function () {
         //IN
         $("#donald").css("border", "#ffba00 2px solid");
         $("#donald").css("border-radius", "35px");
         //OUT
-    }, function() {
+    }, function () {
 
         if (click == 1) {
             $("#donald").css("border", "#ffba00 2px solid");
@@ -191,12 +191,12 @@ $(document).ready(function() {
     });
 
     //KIM
-    $("#avatar_kim").hover(function() {
+    $("#avatar_kim").hover(function () {
         //IN
         $("#kim").css("border", "#ffba00 2px solid");
         $("#kim").css("border-radius", "35px");
         //OUT
-    }, function() {
+    }, function () {
         if (click == 1) {
             $("#kim").css("border", "#ffba00 2px solid");
             $("#kim").css("border-radius", "35px");
