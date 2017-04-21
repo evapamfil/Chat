@@ -104,6 +104,18 @@ header {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin-bottom: 50px;
+}
+
+.li-chat:first-child {
+    width: 50%;
+    bottom: 0px;
+    position: relative;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 25px;
 }
 
 .right-li {
@@ -158,6 +170,7 @@ header {
 .li-chat img {
     width: 10%;
     margin-left: 10px;
+    margin-right: 10px;
 }
 
 .li-chat p img {

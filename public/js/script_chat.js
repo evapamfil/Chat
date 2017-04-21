@@ -27,7 +27,7 @@ $(document).ready(function () {
     }
 
     //SOCKET
-    var socket = io('http://localhost:8080/');
+    var socket = io('https://mood-chat-anthony91.c9users.io:8080/');
     var name_user = getCookie("user");
     eraseCookie("user");
     var my_avatar = getCookie("avatar");
@@ -86,46 +86,66 @@ $(document).ready(function () {
             case 'fillion':
                 var avatar = document.createElement('img');
                 var li = document.createElement('li');
+                var text_user = document.createElement('span');
                 var text = document.createElement('p');
+                
                 text.innerHTML = data.message;
                 li.setAttribute("class", "li-chat");
                 avatar.setAttribute('src', '/static/pictures/fillion.png');
                 li.appendChild(avatar);
                 li.appendChild(text);
+                text.appendChild(text_user);
+                text_user.innerHTML = data.user; 
                 document.getElementById('chat').appendChild(li);
+                console.log(data.user);
                 break;
             case 'byonce':
                 var avatar = document.createElement('img');
                 var li = document.createElement('li');
+                var text_user = document.createElement('span');
                 var text = document.createElement('p');
+                
                 text.innerHTML = data.message;
                 li.setAttribute("class", "li-chat");
                 avatar.setAttribute('src', '/static/pictures/byonce.png');
                 li.appendChild(avatar);
                 li.appendChild(text);
+                text.appendChild(text_user);
+                text_user.innerHTML = data.user; 
                 document.getElementById('chat').appendChild(li);
+                console.log(data.user);
                 break;
             case 'donald':
                 var avatar = document.createElement('img');
                 var li = document.createElement('li');
+                var text_user = document.createElement('span');
                 var text = document.createElement('p');
+                
                 text.innerHTML = data.message;
                 li.setAttribute("class", "li-chat");
                 avatar.setAttribute('src', '/static/pictures/donald.png');
                 li.appendChild(avatar);
                 li.appendChild(text);
+                text.appendChild(text_user);
+                text_user.innerHTML = data.user; 
                 document.getElementById('chat').appendChild(li);
+                console.log(data.user);
                 break;
             case 'kim':
                 var avatar = document.createElement('img');
                 var li = document.createElement('li');
+                var text_user = document.createElement('span');
                 var text = document.createElement('p');
+                
                 text.innerHTML = data.message;
                 li.setAttribute("class", "li-chat");
                 avatar.setAttribute('src', '/static/pictures/kim.png');
                 li.appendChild(avatar);
                 li.appendChild(text);
+                text.appendChild(text_user);
+                text_user.innerHTML = data.user; 
                 document.getElementById('chat').appendChild(li);
+                console.log(data.user);
                 break;
             default:
                 return;
@@ -145,52 +165,70 @@ $(document).ready(function () {
             return alert('please write something');
         }
 
-        console.log(my_avatar);
-
         switch (my_avatar) {
             case 'fillion':
                 var avatar = document.createElement('img');
                 var li = document.createElement('li');
+                var text_user = document.createElement('span')
                 var text = document.createElement('p');
+                
                 text.innerHTML = input.val();
                 li.setAttribute("class", "right-li");
                 avatar.setAttribute('src', '/static/pictures/fillion.png');
                 li.appendChild(text);
+                text.appendChild(text_user);
+                text_user.innerHTML = name_user; 
                 li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
+                console.log(name_user)
                 break;
             case 'byonce':
                 var avatar = document.createElement('img');
                 var li = document.createElement('li');
+                var text_user = document.createElement('span')
                 var text = document.createElement('p');
+                
                 text.innerHTML = input.val();
                 li.setAttribute("class", "right-li");
                 avatar.setAttribute('src', '/static/pictures/byonce.png');
                 li.appendChild(text);
+                text.appendChild(text_user);
+                text_user.innerHTML = name_user; 
                 li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
+                console.log(name_user)
                 break;
             case 'donald':
                 var avatar = document.createElement('img');
                 var li = document.createElement('li');
+                var text_user = document.createElement('span')
                 var text = document.createElement('p');
+                
                 text.innerHTML = input.val();
                 li.setAttribute("class", "right-li");
-                li.appendChild(text);
-                li.appendChild(avatar);
                 avatar.setAttribute('src', '/static/pictures/donald.png');
+                li.appendChild(text);
+                text.appendChild(text_user);
+                text_user.innerHTML = name_user;  
+                li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
+                console.log(name_user)
                 break;
             case 'kim':
                 var avatar = document.createElement('img');
                 var li = document.createElement('li');
+                var text_user = document.createElement('span');
                 var text = document.createElement('p');
+                
                 text.innerHTML = input.val();
                 li.setAttribute("class", "right-li");
                 avatar.setAttribute('src', '/static/pictures/kim.png');
                 li.appendChild(text);
+                text.appendChild(text_user);
+                text_user.innerHTML = name_user; 
                 li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
+                console.log(name_user)
                 break;
             default:
                 return;
