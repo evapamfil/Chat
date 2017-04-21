@@ -21,9 +21,9 @@ $(document).ready(function () {
         }
         return null;
     }
-    
+
     function eraseCookie(name) {
-        setCookie(name,"",-1);
+        setCookie(name, "", -1);
     }
 
     //SOCKET
@@ -53,7 +53,6 @@ $(document).ready(function () {
 
     //AVATAR AND NAME OF USER
     socket.on('user_avatar', function (data) {
-        $("#user").remove();
         for (var i = 0; i < data.length; i++) {
             if (name_user != data[i].user) {
 
@@ -90,7 +89,7 @@ $(document).ready(function () {
                 var text = document.createElement('p');
                 text.innerHTML = data.message;
                 li.setAttribute("class", "li-chat");
-                avatar.setAttribute('src', '/static/pictures/fillion.png'); 
+                avatar.setAttribute('src', '/static/pictures/fillion.png');
                 li.appendChild(avatar);
                 li.appendChild(text);
                 document.getElementById('chat').appendChild(li);
@@ -135,29 +134,29 @@ $(document).ready(function () {
 
 
     function sendmessage() {
-        var input = $('input'), 
+        var input = $('input'),
             message_object = {
-                message : input.val(), 
-                user : name_user, 
-                avatar : my_avatar 
-            }; 
+                message: input.val(),
+                user: name_user,
+                avatar: my_avatar
+            };
 
         if (input.val() == '') {
             return alert('please write something');
         }
-        
-        console.log(my_avatar); 
-        
-         switch (my_avatar) {
+
+        console.log(my_avatar);
+
+        switch (my_avatar) {
             case 'fillion':
                 var avatar = document.createElement('img');
                 var li = document.createElement('li');
                 var text = document.createElement('p');
                 text.innerHTML = input.val();
-                li.setAttribute("class", "li-chat");// CHANGER LA CLASSE POUR DECALER A DROITE 
+                li.setAttribute("class", "right-li");
                 avatar.setAttribute('src', '/static/pictures/fillion.png');
-                li.appendChild(avatar);
                 li.appendChild(text);
+                li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
                 break;
             case 'byonce':
@@ -165,10 +164,10 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text = document.createElement('p');
                 text.innerHTML = input.val();
-                li.setAttribute("class", "li-chat");
-                avatar.setAttribute('src', '/static/pictures/byonce.png');// CHANGER LA CLASSE POUR DECALER A DROITE
-                li.appendChild(avatar);
+                li.setAttribute("class", "right-li");
+                avatar.setAttribute('src', '/static/pictures/byonce.png');
                 li.appendChild(text);
+                li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
                 break;
             case 'donald':
@@ -176,9 +175,9 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text = document.createElement('p');
                 text.innerHTML = input.val();
-                li.setAttribute("class", "li-chat");
-                li.appendChild(avatar);
+                li.setAttribute("class", "right-li");
                 li.appendChild(text);
+                li.appendChild(avatar);
                 avatar.setAttribute('src', '/static/pictures/donald.png');
                 document.getElementById('chat').appendChild(li);
                 break;
@@ -187,10 +186,10 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text = document.createElement('p');
                 text.innerHTML = input.val();
-                li.setAttribute("class", "li-chat");
+                li.setAttribute("class", "right-li");
                 avatar.setAttribute('src', '/static/pictures/kim.png');
-                li.appendChild(avatar);
                 li.appendChild(text);
+                li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
                 break;
             default:
@@ -199,6 +198,8 @@ $(document).ready(function () {
 
         socket.emit('message', message_object)
         input.val('');
+        $('#emoji').css('display', 'none');
+        $('#gif').css('display', 'none');
     }
 
     document.addEventListener('keydown', function (e) {
