@@ -66,27 +66,7 @@ $(document).ready(function () {
     socket.on('user_avatar', function (data) {
         for (var i = 0; i < data.length; i++) {
             if (name_user != data[i].user) {
-
-                switch (data[i].avatar) {
-                    case 'fillion':
-                        $("#user").append('<img src="/static/pictures/fillion.png" alt="user">');
-                        $("#user").append('<p>' + data[i].user + '</p>');
-                        break;
-                    case 'beyonce':
-                        $("#user").append('<img src="/static/pictures/byonce.png" alt="user">');
-                        $("#user").append('<p>' + data[i].user + '</p>');
-                        break;
-                    case 'donald':
-                        $("#user").append('<img src="/static/pictures/donald.png" alt="user">');
-                        $("#user").append('<p>' + data[i].user + '</p>');
-                        break;
-                    case 'kim':
-                        $("#user").append('<img src="/static/pictures/kim.png" alt="user">');
-                        $("#user").append('<p>' + data[i].user + '</p>');
-                        break;
-                    default:
-                        return;
-                }
+                $("#user").append('<p>' + data[i].user + ',' + '</p>');
             }
         }
     });
