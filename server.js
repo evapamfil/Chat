@@ -12,6 +12,7 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var tab_user = [];
+var user;
 var i = 0;
 
 io.on('connection', function (socket) {
@@ -27,7 +28,21 @@ io.on('connection', function (socket) {
         console.log(data);
         tab_user[i] = data;
         i++;
+        console.log(tab_user);
         io.emit('user_avatar', tab_user);
+    });
+
+
+    socket.on('endchat', function (name_user) {
+        for (var i = 0; i < tab_user.length; i++) {
+            if (name_user == tab_user[i].user) {
+                console.log('user disconnected : ' + name_user);
+                io.emit('user-deconnect', tab_user[i].user)
+                delete tab_user[i].user;
+                delete tab_user[i].avatar;
+            }
+        }
+        console.log(tab_user);
     });
 });
 

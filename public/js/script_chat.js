@@ -40,9 +40,8 @@ $(document).ready(function () {
     //SOCKET
     var socket = io('http://localhost:8080');
     var name_user = getCookie("user");
-    eraseCookie("user");
     var my_avatar = getCookie("avatar");
-    eraseCookie("avatar");
+    var i = 0;
 
     function send() {
         socket.emit('user_avatar', {
@@ -64,9 +63,11 @@ $(document).ready(function () {
 
     //AVATAR AND NAME OF USER
     socket.on('user_avatar', function (data) {
+
         for (var i = 0; i < data.length; i++) {
             if (name_user != data[i].user) {
-                $("#user").append('<p>' + data[i].user + ',' + '</p>');
+                $("#user").append('<p id ="' + data[i].user + '">' + data[i].user + ',' + '</p>');
+                console.log(data[i].user)
             }
         }
     });
@@ -238,6 +239,19 @@ $(document).ready(function () {
     });
 
     document.getElementById('button-send').addEventListener('click', sendmessage);
+
+    //DISCONNECT
+    $('#logo_home').click(function () {
+        socket.emit('endchat', name_user);
+    })
+
+    socket.on('user-deconnect', function (data) {
+        var user = document.getElementById(data);
+        if (user.innerHTML == data + ',') {
+            user.innerHTML = "";
+        }
+    });
+
 
     var clik_emoji = 0,
         clik_gif = 0;
