@@ -9,7 +9,8 @@
 =============================================================*/
 $(document).ready(function () {
 
-    var input_name = document.getElementById("name");
+    var input_name = document.getElementById("name"),
+        input_avatar = document.getElementsByClassName("input_avatar");
 
     //SWIPER
     var swiper = new Swiper('.swiper-container', {
@@ -38,14 +39,29 @@ $(document).ready(function () {
     $("#button").click(function (e) {
         if (input_name.value == "") {
             alert("To continue we need your name ! ;)")
+            return false;
         } else {
-            var name = $("#name").val();
-            var avatar = $('input[name=avatar]:checked').val();
-            setCookie("user", name, 30);
-            setCookie("avatar", avatar, 30);
-            $("#button").attr('href', '/static/page.html')
+            switch_html();
+            return true;
+        }
+
+        if (input_avatar[0].checked == false && input_avatar[1].checked == false && input_avatar[2].checked == false && input_avatar[3].checked == false) {
+            alert("To continue we need your avatar ! ;)");
+            return false;
+        } else {
+            switch_html();
+            return true;
         }
     });
+
+    function switch_html() {
+        var name = $("#name").val();
+        var avatar = $('input[name=avatar]:checked').val();
+        setCookie("user", name, 30);
+        setCookie("avatar", avatar, 30);
+        $("#button").attr('href', '/static/page.html')
+        return true;
+    }
 
     //CLICK / FOCUS
     var click = 0;

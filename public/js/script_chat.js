@@ -66,27 +66,7 @@ $(document).ready(function () {
     socket.on('user_avatar', function (data) {
         for (var i = 0; i < data.length; i++) {
             if (name_user != data[i].user) {
-
-                switch (data[i].avatar) {
-                    case 'fillion':
-                        $("#user").append('<img src="/static/pictures/fillion.png" alt="user">');
-                        $("#user").append('<p>' + data[i].user + '</p>');
-                        break;
-                    case 'beyonce':
-                        $("#user").append('<img src="/static/pictures/byonce.png" alt="user">');
-                        $("#user").append('<p>' + data[i].user + '</p>');
-                        break;
-                    case 'donald':
-                        $("#user").append('<img src="/static/pictures/donald.png" alt="user">');
-                        $("#user").append('<p>' + data[i].user + '</p>');
-                        break;
-                    case 'kim':
-                        $("#user").append('<img src="/static/pictures/kim.png" alt="user">');
-                        $("#user").append('<p>' + data[i].user + '</p>');
-                        break;
-                    default:
-                        return;
-                }
+                $("#user").append('<p>' + data[i].user + ',' + '</p>');
             }
         }
     });
@@ -281,7 +261,7 @@ $(document).ready(function () {
             $('#button').css('background-color', '#656464');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
-            $('#button-gif').css('background-image', 'url(/static/pictures/GIF_white.png)');
+            $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
         }
     });
 
@@ -302,7 +282,7 @@ $(document).ready(function () {
             $('#button').css('background-color', '#636A89');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
-            $('#button-gif').css('background-image', 'url(/static/pictures/GIF_white.png)');
+            $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
 
         }
     });
@@ -323,7 +303,7 @@ $(document).ready(function () {
             $('#button').css('background-color', '#86B64B');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
-            $('#button-gif').css('background-image', 'url(/static/pictures/GIF_white.png)');
+            $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
         }
     });
     $('#savana').on({
@@ -343,7 +323,7 @@ $(document).ready(function () {
             $('#button').css('background-color', '#BB582A');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
-            $('#button-gif').css('background-image', 'url(/static/pictures/GIF_white.png)');
+            $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
         }
     });
     $('#sea').on({
@@ -363,7 +343,7 @@ $(document).ready(function () {
             $('#button').css('background-color', '#1DA3F7');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
-            $('#button-gif').css('background-image', 'url(/static/pictures/GIF_white.png)');
+            $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
         }
     });
     $('#light').on({
@@ -383,7 +363,7 @@ $(document).ready(function () {
             $('#button').css('background-color', '#ffffff');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%201.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%201.png)');
-            $('#button-gif').css('background-image', 'url(/static/pictures/GIF.png)');
+            $('#button-gif').css('background-image', 'url(/static/pictures/gif.png)');
 
         }
     });
