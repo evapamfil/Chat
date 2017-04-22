@@ -9,6 +9,16 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
     <script alt="JQuery Library" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var FullBodyHeight = function() {
+                $('body').css('height', window.innerHeight);
+                $('#msg').css('height', window.innerHeight - 100);
+            }
+            setInterval(FullBodyHeight, 0);
+        });
+
+    </script>
 </head>
 
 <body>
@@ -163,12 +173,7 @@
         </article>
     </section>
 
-
-
-
     <script src="../static/js/script_chat.js"></script>
-    <script src="/static/js/cookie.js"></script>
-
 </body>
 
 </html>
