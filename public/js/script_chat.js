@@ -10,6 +10,17 @@
 $(document).ready(function () {
     /* Script for Socket */
     //COOKIE
+    function setCookie(name, value, days) {
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + date.toGMTString();
+        } else {
+            var expires = "";
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
     function getCookie(name) {
         var nameEQ = name + "=";
         var ca = document.cookie.split(';');
@@ -27,7 +38,7 @@ $(document).ready(function () {
     }
 
     //SOCKET
-    var socket = io('https://mood-chat-anthony91.c9users.io:8080/');
+    var socket = io('http://localhost:8080');
     var name_user = getCookie("user");
     eraseCookie("user");
     var my_avatar = getCookie("avatar");
@@ -88,14 +99,14 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text_user = document.createElement('span');
                 var text = document.createElement('p');
-                
+
                 text.innerHTML = data.message;
                 li.setAttribute("class", "li-chat");
                 avatar.setAttribute('src', '/static/pictures/fillion.png');
                 li.appendChild(avatar);
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = data.user; 
+                text_user.innerHTML = data.user;
                 document.getElementById('chat').appendChild(li);
                 console.log(data.user);
                 break;
@@ -104,14 +115,14 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text_user = document.createElement('span');
                 var text = document.createElement('p');
-                
+
                 text.innerHTML = data.message;
                 li.setAttribute("class", "li-chat");
                 avatar.setAttribute('src', '/static/pictures/byonce.png');
                 li.appendChild(avatar);
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = data.user; 
+                text_user.innerHTML = data.user;
                 document.getElementById('chat').appendChild(li);
                 console.log(data.user);
                 break;
@@ -120,14 +131,14 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text_user = document.createElement('span');
                 var text = document.createElement('p');
-                
+
                 text.innerHTML = data.message;
                 li.setAttribute("class", "li-chat");
                 avatar.setAttribute('src', '/static/pictures/donald.png');
                 li.appendChild(avatar);
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = data.user; 
+                text_user.innerHTML = data.user;
                 document.getElementById('chat').appendChild(li);
                 console.log(data.user);
                 break;
@@ -136,14 +147,14 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text_user = document.createElement('span');
                 var text = document.createElement('p');
-                
+
                 text.innerHTML = data.message;
                 li.setAttribute("class", "li-chat");
                 avatar.setAttribute('src', '/static/pictures/kim.png');
                 li.appendChild(avatar);
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = data.user; 
+                text_user.innerHTML = data.user;
                 document.getElementById('chat').appendChild(li);
                 console.log(data.user);
                 break;
@@ -171,13 +182,13 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text_user = document.createElement('span')
                 var text = document.createElement('p');
-                
+
                 text.innerHTML = input.val();
                 li.setAttribute("class", "right-li");
                 avatar.setAttribute('src', '/static/pictures/fillion.png');
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = name_user; 
+                text_user.innerHTML = name_user;
                 li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
                 console.log(name_user)
@@ -187,13 +198,13 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text_user = document.createElement('span')
                 var text = document.createElement('p');
-                
+
                 text.innerHTML = input.val();
                 li.setAttribute("class", "right-li");
                 avatar.setAttribute('src', '/static/pictures/byonce.png');
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = name_user; 
+                text_user.innerHTML = name_user;
                 li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
                 console.log(name_user)
@@ -203,13 +214,13 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text_user = document.createElement('span')
                 var text = document.createElement('p');
-                
+
                 text.innerHTML = input.val();
                 li.setAttribute("class", "right-li");
                 avatar.setAttribute('src', '/static/pictures/donald.png');
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = name_user;  
+                text_user.innerHTML = name_user;
                 li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
                 console.log(name_user)
@@ -219,13 +230,13 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text_user = document.createElement('span');
                 var text = document.createElement('p');
-                
+
                 text.innerHTML = input.val();
                 li.setAttribute("class", "right-li");
                 avatar.setAttribute('src', '/static/pictures/kim.png');
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = name_user; 
+                text_user.innerHTML = name_user;
                 li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
                 console.log(name_user)
