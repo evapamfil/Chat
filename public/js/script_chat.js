@@ -276,6 +276,13 @@ $(document).ready(function () {
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
             $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
+             $('h2').css('display', 'block');
+            $('#first-line').css('display', 'block');
+            $('#second-line').css('display','block');
+            //color input doesn't work 
+            $('input').addClass('input-color');
+            
+        
         }
     });
 
@@ -297,6 +304,10 @@ $(document).ready(function () {
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
             $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
+            $('h2').css('display', 'none');
+            $('#first-line').css('display', 'none');
+            $('#second-line').css('display','none');
+            $('#chat p').css('backgrounf-color', ' rgba(255,255,255,0.6)');
 
         }
     });
@@ -318,6 +329,10 @@ $(document).ready(function () {
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
             $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
+             $('h2').css('display', 'none');
+            $('#first-line').css('display', 'none');
+            $('#second-line').css('display','none');
+            $('#chat p').css('backgrounf-color', ' rgba(255,255,255,0.6)');
         }
     });
     $('#savana').on({
@@ -338,6 +353,10 @@ $(document).ready(function () {
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
             $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
+             $('h2').css('display', 'none');
+            $('#first-line').css('display', 'none');
+            $('#second-line').css('display','none');
+            $('#chat p').css('backgrounf-color', ' rgba(255,255,255,0.6)');
         }
     });
     $('#sea').on({
@@ -358,6 +377,10 @@ $(document).ready(function () {
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
             $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
+             $('h2').css('display', 'none');
+            $('#first-line').css('display', 'none');
+            $('#second-line').css('display','none');
+            $('#chat p').css('backgrounf-color', ' rgba(255,255,255,0.6)');
         }
     });
     $('#light').on({
@@ -378,9 +401,144 @@ $(document).ready(function () {
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%201.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%201.png)');
             $('#button-gif').css('background-image', 'url(/static/pictures/gif.png)');
+             $('h2').css('display', 'block');
+            $('#first-line').css('display', 'block');
+            $('#second-line').css('display','block');
 
         }
     });
+    
+    // COLOR
+    
+     $('#red').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#ff0000');
+            $('#chat p').css('color', '#ffffff');
+          
+        
+        }
+    });
+     $('#orange').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#ffa700');
+            $('#chat p').css('color', '#ffffff');
+          
+        
+        }
+    });
+     $('#yellow').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#ffeb00');
+            $('#chat p').css('color', 'black');
+          
+        
+        }
+    });
+        $('#green').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#45ff00');
+            $('#chat p').css('color', '#ffffff');
+          
+        
+        }
+    });
+     $('#turquoise').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#00ffb1');
+            $('#chat p').css('color', 'black');
+          
+        
+        }
+    });
+     $('#light-blue').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#00fff5');
+            $('#chat p').css('color', 'black');
+          
+        
+        }
+    });
+      $('#blue').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#00d8ff');
+            $('#chat p').css('color', '#ffffff');
+          
+        
+        }
+    });
+       $('#dark-blue').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#0089ff');
+            $('#chat p').css('color', '#ffffff');
+          
+        
+        }
+    });
+        $('#dark-blue1').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#2700ff');
+            $('#chat p').css('color', '#ffffff');
+          
+        
+        }
+    });
+     $('#purple').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#9d00ff');
+            $('#chat p').css('color', '#ffffff');
+          
+        
+        }
+    });
+       $('#light-purple').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#e200ff');
+            $('#chat p').css('color', '#ffffff');
+          
+        
+        }
+    });
+         $('#pink').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#ff00a7');
+            $('#chat p').css('color', '#ffffff');
+          
+        
+        }
+    });
+      $('#light-pink').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#ff98db');
+            $('#chat p').css('color', 'black');
+          
+        
+        }
+    });
+         $('#dark-color').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#000000');
+            $('#chat p').css('color', '#ffffff');
+          
+        
+        }
+    });
+     $('#grey').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#9b9b9b');
+            $('#chat p').css('color', 'black');
+          
+        
+        }
+    });
+     $('#white').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#ffffff');
+            $('#chat p').css('color', 'black');
+          
+        
+        }
+    });
+
 
     //EMOJI
     $('#button-emoji').on({

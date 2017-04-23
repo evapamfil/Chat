@@ -95,6 +95,21 @@ header {
     display: flex;
     flex-direction: column;
 }
+#chat p {
+    background-color: rgba(255,255,255,0.6);
+    
+}
+#chat span{
+    float: left;
+    margin-right: 10px;
+    font-weight: bold;
+    
+    
+}
+#chat p .emoji{
+    width: 25px;
+    height: 25px;
+}
 
 .li-chat {
     width: 50%;
@@ -492,6 +507,9 @@ h2 {
 input {
     width: 78%;
     font-size: 15px;
+}
+.input-color{
+    color: white;
 }
 
 #button {
