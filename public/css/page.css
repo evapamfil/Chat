@@ -4,14 +4,6 @@
     box-sizing: border-box;
 }
 
-html {
-    height: 100%;
-}
-
-body {
-    overflow: hidden;
-}
-
 @font-face {
     font-family: "Gotham-Light";
     src: url(/static/font/Gotham-Light.otf);
@@ -59,6 +51,15 @@ header {
     margin-left: 18px;
 }
 
+#power {
+    width: 35px;
+    float: right;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+    margin-right: 20px;
+}
+
 #msg {
     height: 603px;
     width: 100%;
@@ -92,8 +93,21 @@ header {
     height: calc(100% - 47px);
     overflow-y: scroll;
     padding: 8px;
-    display: flex;
-    flex-direction: column;
+}
+
+#chat p {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+#chat span {
+    float: left;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+#chat p .emoji {
+    width: 25px;
+    height: 25px;
 }
 
 .li-chat {
@@ -439,6 +453,22 @@ h2 {
 
 #white {
     background-color: #ffffff;
+}
+
+.input-color::-webkit-input-placeholder {
+    color: white;
+}
+
+.input-color::-moz-placeholder {
+    color: white;
+}
+
+.input-color::-ms-input-placeholder {
+    color: white;
+}
+
+.input-color::placeholder {
+    color: white;
 }
 
 

@@ -93,7 +93,7 @@ $(document).ready(function () {
                 li.appendChild(avatar);
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = data.user;
+                text_user.innerHTML = data.user + ':';
                 document.getElementById('chat').appendChild(li);
                 console.log(data.user);
                 break;
@@ -109,7 +109,7 @@ $(document).ready(function () {
                 li.appendChild(avatar);
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = data.user;
+                text_user.innerHTML = data.user + ':';
                 document.getElementById('chat').appendChild(li);
                 console.log(data.user);
                 break;
@@ -125,7 +125,7 @@ $(document).ready(function () {
                 li.appendChild(avatar);
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = data.user;
+                text_user.innerHTML = data.user + ':';
                 document.getElementById('chat').appendChild(li);
                 console.log(data.user);
                 break;
@@ -141,9 +141,10 @@ $(document).ready(function () {
                 li.appendChild(avatar);
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = data.user;
+                text_user.innerHTML = data.user + ':';
                 document.getElementById('chat').appendChild(li);
                 console.log(data.user);
+
                 break;
             default:
                 return;
@@ -175,7 +176,7 @@ $(document).ready(function () {
                 avatar.setAttribute('src', '/static/pictures/fillion.png');
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = name_user;
+                text_user.innerHTML = name_user + ':';
                 li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
                 console.log(name_user)
@@ -191,7 +192,7 @@ $(document).ready(function () {
                 avatar.setAttribute('src', '/static/pictures/byonce.png');
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = name_user;
+                text_user.innerHTML = name_user + ':';
                 li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
                 console.log(name_user)
@@ -207,7 +208,7 @@ $(document).ready(function () {
                 avatar.setAttribute('src', '/static/pictures/donald.png');
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = name_user;
+                text_user.innerHTML = name_user + ':';
                 li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
                 console.log(name_user)
@@ -223,7 +224,7 @@ $(document).ready(function () {
                 avatar.setAttribute('src', '/static/pictures/kim.png');
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = name_user;
+                text_user.innerHTML = name_user + ':';
                 li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
                 console.log(name_user)
@@ -247,6 +248,10 @@ $(document).ready(function () {
     document.getElementById('button-send').addEventListener('click', sendmessage);
 
     //DISCONNECT
+    $('#disconnect').click(function () {
+        socket.emit('endchat', name_user);
+    })
+
     $('#logo_home').click(function () {
         socket.emit('endchat', name_user);
     })
@@ -275,13 +280,18 @@ $(document).ready(function () {
             $('#section-right').css('background-image', 'url(/static/pictures/black.jpg)');
             $('#section-right').css('background-size', '');
             $('input').css('background-color', '#656464');
-            $('[placeholder]').css('color', '#ffffff');
             $('input').css('color', 'white');
             $('button').css('background-color', '#656464');
             $('#button').css('background-color', '#656464');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
             $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
+            $('h2').css('display', 'block');
+            $('#first-line').css('display', 'block');
+            $('#second-line').css('display', 'block');
+            $('input').addClass('input-color');
+
+
         }
     });
 
@@ -303,6 +313,11 @@ $(document).ready(function () {
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
             $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
+            $('h2').css('display', 'none');
+            $('#first-line').css('display', 'none');
+            $('#second-line').css('display', 'none');
+            $('#chat p').css('backgrounf-color', ' rgba(255,255,255,0.6)');
+            $('input').addClass('input-color');
 
         }
     });
@@ -324,6 +339,11 @@ $(document).ready(function () {
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
             $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
+            $('h2').css('display', 'none');
+            $('#first-line').css('display', 'none');
+            $('#second-line').css('display', 'none');
+            $('#chat p').css('backgrounf-color', ' rgba(255,255,255,0.6)');
+            $('input').addClass('input-color');
         }
     });
     $('#savana').on({
@@ -344,6 +364,11 @@ $(document).ready(function () {
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
             $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
+            $('h2').css('display', 'none');
+            $('#first-line').css('display', 'none');
+            $('#second-line').css('display', 'none');
+            $('#chat p').css('backgrounf-color', ' rgba(255,255,255,0.6)');
+            $('input').addClass('input-color');
         }
     });
     $('#sea').on({
@@ -364,6 +389,11 @@ $(document).ready(function () {
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
             $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
+            $('h2').css('display', 'none');
+            $('#first-line').css('display', 'none');
+            $('#second-line').css('display', 'none');
+            $('#chat p').css('backgrounf-color', ' rgba(255,255,255,0.6)');
+            $('input').addClass('input-color');
         }
     });
     $('#light').on({
@@ -384,10 +414,111 @@ $(document).ready(function () {
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%201.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%201.png)');
             $('#button-gif').css('background-image', 'url(/static/pictures/gif.png)');
+            $('h2').css('display', 'block');
+            $('#first-line').css('display', 'block');
+            $('#second-line').css('display', 'block');
+            $('input').removeClass('input-color');
 
         }
     });
 
+    // COLOR
+    $('#red').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#ff0000');
+            $('#chat p').css('color', '#ffffff');
+        }
+    });
+    $('#orange').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#ffa700');
+            $('#chat p').css('color', '#ffffff');
+        }
+    });
+    $('#yellow').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#ffeb00');
+            $('#chat p').css('color', 'black');
+        }
+    });
+    $('#green').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#45ff00');
+            $('#chat p').css('color', '#ffffff');
+        }
+    });
+    $('#turquoise').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#00ffb1');
+            $('#chat p').css('color', 'black');
+        }
+    });
+    $('#light-blue').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#00fff5');
+            $('#chat p').css('color', 'black');
+        }
+    });
+    $('#blue').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#00d8ff');
+            $('#chat p').css('color', '#ffffff');
+        }
+    });
+    $('#dark-blue').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#0089ff');
+            $('#chat p').css('color', '#ffffff');
+        }
+    });
+    $('#dark-blue1').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#2700ff');
+            $('#chat p').css('color', '#ffffff');
+        }
+    });
+    $('#purple').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#9d00ff');
+            $('#chat p').css('color', '#ffffff');
+        }
+    });
+    $('#light-purple').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#e200ff');
+            $('#chat p').css('color', '#ffffff');
+        }
+    });
+    $('#pink').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#ff00a7');
+            $('#chat p').css('color', '#ffffff');
+        }
+    });
+    $('#light-pink').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#ff98db');
+            $('#chat p').css('color', 'black');
+        }
+    });
+    $('#dark-color').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#000000');
+            $('#chat p').css('color', '#ffffff');
+        }
+    });
+    $('#grey').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#9b9b9b');
+            $('#chat p').css('color', 'black');
+        }
+    });
+    $('#white').on({
+        'click': function () {
+            $('#chat p').css('background-color', '#ffffff');
+            $('#chat p').css('color', 'black');
+        }
+    });
     //EMOJI
     $('#button-emoji').on({
         'click': function () {
@@ -642,7 +773,6 @@ $(document).ready(function () {
 
             _li.append(_img)
             $('#gif ul').append(_li);
-
 
             _img.on({
                 'click': function () {
