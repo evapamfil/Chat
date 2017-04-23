@@ -10,6 +10,17 @@
 $(document).ready(function () {
     /* Script for Socket */
     //COOKIE
+    function setCookie(name, value, days) {
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + date.toGMTString();
+        } else {
+            var expires = "";
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
     function getCookie(name) {
         var nameEQ = name + "=";
         var ca = document.cookie.split(';');
@@ -27,11 +38,10 @@ $(document).ready(function () {
     }
 
     //SOCKET
-    var socket = io('https://mood-chat-anthony91.c9users.io:8080/');
+    var socket = io('http://localhost:8080');
     var name_user = getCookie("user");
-    eraseCookie("user");
     var my_avatar = getCookie("avatar");
-    eraseCookie("avatar");
+    var i = 0;
 
     function send() {
         socket.emit('user_avatar', {
@@ -53,29 +63,11 @@ $(document).ready(function () {
 
     //AVATAR AND NAME OF USER
     socket.on('user_avatar', function (data) {
+
         for (var i = 0; i < data.length; i++) {
             if (name_user != data[i].user) {
-
-                switch (data[i].avatar) {
-                    case 'fillion':
-                        $("#user").append('<img src="/static/pictures/fillion.png" alt="user">');
-                        $("#user").append('<p>' + data[i].user + '</p>');
-                        break;
-                    case 'beyonce':
-                        $("#user").append('<img src="/static/pictures/byonce.png" alt="user">');
-                        $("#user").append('<p>' + data[i].user + '</p>');
-                        break;
-                    case 'donald':
-                        $("#user").append('<img src="/static/pictures/donald.png" alt="user">');
-                        $("#user").append('<p>' + data[i].user + '</p>');
-                        break;
-                    case 'kim':
-                        $("#user").append('<img src="/static/pictures/kim.png" alt="user">');
-                        $("#user").append('<p>' + data[i].user + '</p>');
-                        break;
-                    default:
-                        return;
-                }
+                $("#user").append('<p id ="' + data[i].user + '">' + data[i].user + ',' + '</p>');
+                console.log(data[i].user)
             }
         }
     });
@@ -88,14 +80,14 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text_user = document.createElement('span');
                 var text = document.createElement('p');
-                
+
                 text.innerHTML = data.message;
                 li.setAttribute("class", "li-chat");
                 avatar.setAttribute('src', '/static/pictures/fillion.png');
                 li.appendChild(avatar);
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = data.user; 
+                text_user.innerHTML = data.user;
                 document.getElementById('chat').appendChild(li);
                 console.log(data.user);
                 break;
@@ -104,14 +96,14 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text_user = document.createElement('span');
                 var text = document.createElement('p');
-                
+
                 text.innerHTML = data.message;
                 li.setAttribute("class", "li-chat");
                 avatar.setAttribute('src', '/static/pictures/byonce.png');
                 li.appendChild(avatar);
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = data.user; 
+                text_user.innerHTML = data.user;
                 document.getElementById('chat').appendChild(li);
                 console.log(data.user);
                 break;
@@ -120,14 +112,14 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text_user = document.createElement('span');
                 var text = document.createElement('p');
-                
+
                 text.innerHTML = data.message;
                 li.setAttribute("class", "li-chat");
                 avatar.setAttribute('src', '/static/pictures/donald.png');
                 li.appendChild(avatar);
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = data.user; 
+                text_user.innerHTML = data.user;
                 document.getElementById('chat').appendChild(li);
                 console.log(data.user);
                 break;
@@ -136,14 +128,14 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text_user = document.createElement('span');
                 var text = document.createElement('p');
-                
+
                 text.innerHTML = data.message;
                 li.setAttribute("class", "li-chat");
                 avatar.setAttribute('src', '/static/pictures/kim.png');
                 li.appendChild(avatar);
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = data.user; 
+                text_user.innerHTML = data.user;
                 document.getElementById('chat').appendChild(li);
                 console.log(data.user);
                 break;
@@ -171,13 +163,13 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text_user = document.createElement('span')
                 var text = document.createElement('p');
-                
+
                 text.innerHTML = input.val();
                 li.setAttribute("class", "right-li");
                 avatar.setAttribute('src', '/static/pictures/fillion.png');
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = name_user; 
+                text_user.innerHTML = name_user;
                 li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
                 console.log(name_user)
@@ -187,13 +179,13 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text_user = document.createElement('span')
                 var text = document.createElement('p');
-                
+
                 text.innerHTML = input.val();
                 li.setAttribute("class", "right-li");
                 avatar.setAttribute('src', '/static/pictures/byonce.png');
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = name_user; 
+                text_user.innerHTML = name_user;
                 li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
                 console.log(name_user)
@@ -203,13 +195,13 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text_user = document.createElement('span')
                 var text = document.createElement('p');
-                
+
                 text.innerHTML = input.val();
                 li.setAttribute("class", "right-li");
                 avatar.setAttribute('src', '/static/pictures/donald.png');
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = name_user;  
+                text_user.innerHTML = name_user;
                 li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
                 console.log(name_user)
@@ -219,13 +211,13 @@ $(document).ready(function () {
                 var li = document.createElement('li');
                 var text_user = document.createElement('span');
                 var text = document.createElement('p');
-                
+
                 text.innerHTML = input.val();
                 li.setAttribute("class", "right-li");
                 avatar.setAttribute('src', '/static/pictures/kim.png');
                 li.appendChild(text);
                 text.appendChild(text_user);
-                text_user.innerHTML = name_user; 
+                text_user.innerHTML = name_user;
                 li.appendChild(avatar);
                 document.getElementById('chat').appendChild(li);
                 console.log(name_user)
@@ -247,6 +239,19 @@ $(document).ready(function () {
     });
 
     document.getElementById('button-send').addEventListener('click', sendmessage);
+
+    //DISCONNECT
+    $('#logo_home').click(function () {
+        socket.emit('endchat', name_user);
+    })
+
+    socket.on('user-deconnect', function (data) {
+        var user = document.getElementById(data);
+        if (user.innerHTML == data + ',') {
+            user.innerHTML = "";
+        }
+    });
+
 
     var clik_emoji = 0,
         clik_gif = 0;
@@ -270,7 +275,7 @@ $(document).ready(function () {
             $('#button').css('background-color', '#656464');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
-            $('#button-gif').css('background-image', 'url(/static/pictures/GIF_white.png)');
+            $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
         }
     });
 
@@ -291,7 +296,7 @@ $(document).ready(function () {
             $('#button').css('background-color', '#636A89');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
-            $('#button-gif').css('background-image', 'url(/static/pictures/GIF_white.png)');
+            $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
 
         }
     });
@@ -312,7 +317,7 @@ $(document).ready(function () {
             $('#button').css('background-color', '#86B64B');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
-            $('#button-gif').css('background-image', 'url(/static/pictures/GIF_white.png)');
+            $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
         }
     });
     $('#savana').on({
@@ -332,7 +337,7 @@ $(document).ready(function () {
             $('#button').css('background-color', '#BB582A');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
-            $('#button-gif').css('background-image', 'url(/static/pictures/GIF_white.png)');
+            $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
         }
     });
     $('#sea').on({
@@ -352,7 +357,7 @@ $(document).ready(function () {
             $('#button').css('background-color', '#1DA3F7');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%202.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%208.png)');
-            $('#button-gif').css('background-image', 'url(/static/pictures/GIF_white.png)');
+            $('#button-gif').css('background-image', 'url(/static/pictures/gif_white.png)');
         }
     });
     $('#light').on({
@@ -372,7 +377,7 @@ $(document).ready(function () {
             $('#button').css('background-color', '#ffffff');
             $('#button-emoji').css('background-image', 'url(/static/pictures/Group%201.png)');
             $('#button-send').css('background-image', 'url(/static/pictures/Path%201.png)');
-            $('#button-gif').css('background-image', 'url(/static/pictures/GIF.png)');
+            $('#button-gif').css('background-image', 'url(/static/pictures/gif.png)');
 
         }
     });
