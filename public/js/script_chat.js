@@ -61,13 +61,19 @@ $(document).ready(function () {
         console.log(data);
     });
 
+    console.log(name_user);
     //AVATAR AND NAME OF USER
     socket.on('user_avatar', function (data) {
-
         for (var i = 0; i < data.length; i++) {
-            if (name_user != data[i].user) {
+            if (name_user == data[i].user) {
+                $("#user").append('<p></p>');
+                console.log(i);
+            } else {
                 $("#user").append('<p id ="' + data[i].user + '">' + data[i].user + ',' + '</p>');
-                console.log(data[i].user)
+                console.log(data[i].user);
+                i++;
+                console.log(i);
+                break;
             }
         }
     });
