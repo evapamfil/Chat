@@ -119,6 +119,8 @@ header {
     justify-content: flex-start;
     align-items: center;
     margin-bottom: 50px;
+    word-wrap: break-word;
+}
 }
 
 .li-chat:first-child {
@@ -141,6 +143,8 @@ header {
     justify-content: flex-start;
     align-items: center;
     left: 50%;
+    word-wrap: break-word;
+}
 }
 
 .right-li:first-child {
