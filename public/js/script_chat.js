@@ -38,7 +38,7 @@ $(document).ready(function () {
     }
 
     //SOCKET
-    var socket = io('http://localhost:8080');
+    var socket = io('https://mood-chat-anthony91.c9users.io:8080');
     var name_user = getCookie("user");
     var my_avatar = getCookie("avatar");
     var i = 0;
@@ -783,10 +783,10 @@ $(document).ready(function () {
     }
 
     //API GIPHY
-    var url_giphy = "https://api.giphy.com/v1/stickers/search?q=cat&api_key=dc6zaTOxFJmzC ";
+    var url_giphy = "https://api.giphy.com/v1/stickers/search?q=all&api_key=dc6zaTOxFJmzC";
 
     $.get(url_giphy, function (data) {
-
+        console.log(data); 
         list_gif(data.data);
 
     });
