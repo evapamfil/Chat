@@ -64,11 +64,14 @@ $(document).ready(function () {
     console.log(name_user);
     //AVATAR AND NAME OF USER
     socket.on('user_avatar', function (data) {
+        $('#user').remove();
+        $('header').append("<div id='user'></div>");
         for (var i = 0; i < data.length; i++) {
             if (name_user != data[i].user) {
                 $("#user").append('<p id ="' + data[i].user + '">' + data[i].user + ',' + '</p>');
                 console.log(data[i].user)
             }
+            console.log(i);
         }
     });
 
@@ -268,8 +271,6 @@ $(document).ready(function () {
         clik_gif = 0;
 
     //FRONT
-
-    
     $('#dark').on({
         'click': function () {
             $('#logo').attr('src', '/static/pictures/LOGO-moodchat-white.png');
