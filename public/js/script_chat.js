@@ -654,6 +654,8 @@ $(document).ready(function () {
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
+    
+    
 
     $("#emoji19").click(function () {
         var _smiley = $('#emoji19').find('p');
