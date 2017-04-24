@@ -241,7 +241,7 @@ input {
 }
 
 #emoji {
-    width: 250px;
+    width: 225px;
     height: 250px;
     background-color: white;
     border-radius: 10px;
@@ -261,10 +261,9 @@ input {
     display: inline-block;
 }
 
-.emoji {
-    width: 25px;
-    height: 25px;
-    margin: 5px;
+.emoji-list li p{
+    display: inline-block;
+    font-size: 30px; 
 }
 
 #button-send {
@@ -537,9 +536,6 @@ input {
 
 #button-send {
     width: 34px;
-}
-
-
 }
 
 /*PHONE*/

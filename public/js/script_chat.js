@@ -65,15 +65,9 @@ $(document).ready(function () {
     //AVATAR AND NAME OF USER
     socket.on('user_avatar', function (data) {
         for (var i = 0; i < data.length; i++) {
-            if (name_user == data[i].user) {
-                $("#user").append('<p></p>');
-                console.log(i);
-            } else {
+            if (name_user != data[i].user) {
                 $("#user").append('<p id ="' + data[i].user + '">' + data[i].user + ',' + '</p>');
-                console.log(data[i].user);
-                i++;
-                console.log(i);
-                break;
+                console.log(data[i].user)
             }
         }
     });
@@ -535,218 +529,218 @@ $(document).ready(function () {
 
     //SEND EMOJI
 
-    $("#emoji1").click(function () {
-        var _smiley = $('#emoji1').find('img');
-        var smiley = _smiley[0].outerHTML;
+ $("#emoji1").click(function () {
+        var _smiley = $('#emoji1').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji2").click(function () {
-        var _smiley = $('#emoji2').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji2').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji3").click(function () {
-        var _smiley = $('#emoji3').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji3').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji4").click(function () {
-        var _smiley = $('#emoji4').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji4').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji5").click(function () {
-        var _smiley = $('#emoji5').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji5').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji6").click(function () {
-        var _smiley = $('#emoji6').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji6').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji7").click(function () {
-        var _smiley = $('#emoji7').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji7').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji8").click(function () {
-        var _smiley = $('#emoji8').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji8').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji9").click(function () {
-        var _smiley = $('#emoji9').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji9').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji10").click(function () {
-        var _smiley = $('#emoji10').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji10').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji11").click(function () {
-        var _smiley = $('#emoji11').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji11').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji12").click(function () {
-        var _smiley = $('#emoji12').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji12').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji13").click(function () {
-        var _smiley = $('#emoji13').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji13').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji14").click(function () {
-        var _smiley = $('#emoji14').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji14').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji15").click(function () {
-        var _smiley = $('#emoji15').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji15').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji16").click(function () {
-        var _smiley = $('#emoji16').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji16').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji17").click(function () {
-        var _smiley = $('#emoji17').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji17').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji18").click(function () {
-        var _smiley = $('#emoji18').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji18').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji19").click(function () {
-        var _smiley = $('#emoji19').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji19').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji20").click(function () {
-        var _smiley = $('#emoji20').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji20').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
     $("#emoji20").click(function () {
-        var _smiley = $('#emoji20').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji20').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji21").click(function () {
-        var _smiley = $('#emoji21').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji21').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji22").click(function () {
-        var _smiley = $('#emoji22').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji22').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji23").click(function () {
-        var _smiley = $('#emoji23').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji23').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji24").click(function () {
-        var _smiley = $('#emoji24').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji24').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji25").click(function () {
-        var _smiley = $('#emoji25').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji25').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji26").click(function () {
-        var _smiley = $('#emoji26').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji26').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji27").click(function () {
-        var _smiley = $('#emoji27').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji27').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji28").click(function () {
-        var _smiley = $('#emoji28').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji28').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji29").click(function () {
-        var _smiley = $('#emoji29').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji29').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
 
     $("#emoji30").click(function () {
-        var _smiley = $('#emoji30').find('img');
-        var smiley = _smiley[0].outerHTML;
+        var _smiley = $('#emoji30').find('p');
+        var smiley = _smiley[0].innerText;
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
