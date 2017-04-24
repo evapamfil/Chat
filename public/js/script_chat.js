@@ -138,11 +138,13 @@ $(document).ready(function () {
                 text_user.innerHTML = data.user + ':';
                 document.getElementById('chat').appendChild(li);
                 console.log(data.user);
-
                 break;
             default:
                 return;
         }
+        $('#chat .li-chat p').css('color', color_text);
+        $('#chat .li-chat p').css('background-color', color);
+        $('#chat').scrollTop($('#chat')[0].scrollHeight);
     });
 
 
@@ -223,9 +225,13 @@ $(document).ready(function () {
                 document.getElementById('chat').appendChild(li);
                 console.log(name_user)
                 break;
-            default:
+            default: 
                 return;
         }
+
+        $('#chat').scrollTop($('#chat')[0].scrollHeight);
+        $('#chat .right-li p').css('color', color_text);
+        $('#chat .right-li p').css('background-color', color);
 
         socket.emit('message', message_object)
         input.val('');
@@ -262,6 +268,8 @@ $(document).ready(function () {
         clik_gif = 0;
 
     //FRONT
+
+    
     $('#dark').on({
         'click': function () {
             $('#logo').attr('src', '/static/pictures/LOGO-moodchat-white.png');
@@ -310,7 +318,8 @@ $(document).ready(function () {
             $('h2').css('display', 'none');
             $('#first-line').css('display', 'none');
             $('#second-line').css('display', 'none');
-            $('#chat p').css('backgrounf-color', ' rgba(255,255,255,0.6)');
+            $('#chat p').css('background-color', ' rgba(255,255,255,0.6)');
+            $('#chat p').css('color', 'black');
             $('input').addClass('input-color');
 
         }
@@ -336,7 +345,8 @@ $(document).ready(function () {
             $('h2').css('display', 'none');
             $('#first-line').css('display', 'none');
             $('#second-line').css('display', 'none');
-            $('#chat p').css('backgrounf-color', ' rgba(255,255,255,0.6)');
+            $('#chat p').css('background-color', ' rgba(255,255,255,0.6)');
+            $('#chat p').css('color', 'black');
             $('input').addClass('input-color');
         }
     });
@@ -361,7 +371,8 @@ $(document).ready(function () {
             $('h2').css('display', 'none');
             $('#first-line').css('display', 'none');
             $('#second-line').css('display', 'none');
-            $('#chat p').css('backgrounf-color', ' rgba(255,255,255,0.6)');
+            $('#chat p').css('background-color', ' rgba(255,255,255,0.6)');
+            $('#chat p').css('color', 'black');
             $('input').addClass('input-color');
         }
     });
@@ -386,7 +397,8 @@ $(document).ready(function () {
             $('h2').css('display', 'none');
             $('#first-line').css('display', 'none');
             $('#second-line').css('display', 'none');
-            $('#chat p').css('backgrounf-color', ' rgba(255,255,255,0.6)');
+            $('#chat p').css('background-color', ' rgba(255,255,255,0.6)');
+            $('#chat p').css('color', 'black');
             $('input').addClass('input-color');
         }
     });
@@ -417,100 +429,135 @@ $(document).ready(function () {
     });
 
     // COLOR
+    var color; 
+    var color_text; 
     $('#red').on({
         'click': function () {
+            color = '#ff0000';
+            color_text = 'white'; 
             $('#chat p').css('background-color', '#ff0000');
             $('#chat p').css('color', '#ffffff');
         }
     });
     $('#orange').on({
         'click': function () {
+            color = '#ffa700';
+            color_text = 'white'; 
             $('#chat p').css('background-color', '#ffa700');
             $('#chat p').css('color', '#ffffff');
         }
     });
     $('#yellow').on({
         'click': function () {
+            color = '#ffeb00'
+            color_text = 'black'; 
             $('#chat p').css('background-color', '#ffeb00');
             $('#chat p').css('color', 'black');
         }
     });
     $('#green').on({
         'click': function () {
+            color = '#45ff00'; 
+            color_text = 'white'; 
             $('#chat p').css('background-color', '#45ff00');
             $('#chat p').css('color', '#ffffff');
         }
     });
     $('#turquoise').on({
         'click': function () {
+            color = '#00ffb1'; 
+            color_text = 'black'; 
             $('#chat p').css('background-color', '#00ffb1');
             $('#chat p').css('color', 'black');
         }
     });
     $('#light-blue').on({
         'click': function () {
+            color = '#00fff5';
+            color_text = 'black'; 
             $('#chat p').css('background-color', '#00fff5');
             $('#chat p').css('color', 'black');
         }
     });
     $('#blue').on({
         'click': function () {
+            color = '#00d8ff';
+            color_text = 'white'; 
             $('#chat p').css('background-color', '#00d8ff');
             $('#chat p').css('color', '#ffffff');
         }
     });
     $('#dark-blue').on({
         'click': function () {
+            color = '#0089ff';
+            color_text = 'white'; 
             $('#chat p').css('background-color', '#0089ff');
             $('#chat p').css('color', '#ffffff');
         }
     });
     $('#dark-blue1').on({
         'click': function () {
+            color = '#2700ff'; 
+            color_text = 'white'; 
             $('#chat p').css('background-color', '#2700ff');
             $('#chat p').css('color', '#ffffff');
         }
     });
     $('#purple').on({
         'click': function () {
+            color = '#9d00ff';
+            color_text = 'white'; 
             $('#chat p').css('background-color', '#9d00ff');
             $('#chat p').css('color', '#ffffff');
         }
     });
     $('#light-purple').on({
         'click': function () {
+            color = '#e200ff';
+            color_text = 'white'; 
             $('#chat p').css('background-color', '#e200ff');
             $('#chat p').css('color', '#ffffff');
         }
     });
     $('#pink').on({
         'click': function () {
+            color = '#ff00a7'; 
+            color_text = 'white'; 
             $('#chat p').css('background-color', '#ff00a7');
             $('#chat p').css('color', '#ffffff');
         }
     });
     $('#light-pink').on({
         'click': function () {
+            color = '#ff98db'; 
+            color_text = 'black'; 
             $('#chat p').css('background-color', '#ff98db');
             $('#chat p').css('color', 'black');
         }
     });
     $('#dark-color').on({
         'click': function () {
+            color = '#000000';
+            color_text = 'white'; 
             $('#chat p').css('background-color', '#000000');
             $('#chat p').css('color', '#ffffff');
         }
     });
     $('#grey').on({
         'click': function () {
+            color = '#9b9b9b'; 
+            color_text = 'black'; 
             $('#chat p').css('background-color', '#9b9b9b');
             $('#chat p').css('color', 'black');
         }
     });
     $('#white').on({
         'click': function () {
+            color = '#ffffff'; 
+            color_text = 'black'; 
             $('#chat p').css('background-color', '#ffffff');
             $('#chat p').css('color', 'black');
+
         }
     });
     //EMOJI
@@ -654,8 +701,6 @@ $(document).ready(function () {
         var message = $('input').val();
         $('input').val(message + ' ' + smiley + ' ').focus();
     });
-    
-    
 
     $("#emoji19").click(function () {
         var _smiley = $('#emoji19').find('p');
